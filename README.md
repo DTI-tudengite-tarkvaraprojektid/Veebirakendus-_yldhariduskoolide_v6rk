@@ -6,22 +6,31 @@ Tegemist on veebirakendusega, kus on võimalik vaadata Eestis tegutsevate või j
 
 Töö on tehtud [Tallinna Ülikooli Digitehnoloogiate instituudi](https://www.tlu.ee/et/Digitehnoloogiate-instituut) suvepraktika raames.
 
-Tehnoloogia
+Tehnoloogiad
 ---
 Javascript
-Php
-CSS
-HTML
-Mysql
-jquery
 
-Meeskond
+Php  
+
+CSS  
+
+HTML  
+
+Mysql  
+
+jquery  
+
+Meeskond  
 ---
-Oscar August Heinla
-Kent Loog
-Tanel Otsa
-Kirill Kotkas
-Brigid-Ly Palkman 
+Oscar August Heinla  
+
+Kent Loog  
+
+Tanel Otsa  
+
+Kirill Kotkas  
+
+Brigid-Ly Palkman   
 
 Paigaldus
 ---
