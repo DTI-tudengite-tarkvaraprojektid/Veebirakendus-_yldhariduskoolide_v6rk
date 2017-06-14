@@ -1,0 +1,45 @@
+html { width: 990px; padding-left: 5px; padding-right: 5px; margin-left: auto; margin-right: auto; }
+
+body { background-color: white; overflow-y:scroll; width: 980px; margin-left: auto; margin-right: auto; }
+
+th { background-color: #F5F5F5 ; vertical-align: top; padding: 0px; margin: 0px; text-align: left;}
+
+table, tr, td, th { border: 7px solid #F5F5F5 ; border-spacing: 0; margin: 0px; }
+
+td { width: 800px; height: 300px; }
+
+img{ width: 100%; height: 100%;}
+
+.diagram { width: 1000px; height: 250px; }
+
+.center { width: 250px; height: 20px; text-align: center;  }
+
+.center2 { width: 100%; height: 30px; text-align: center; }
+
+.center3 { width: 70%; height: 30px; text-align: center; float: left; }
+
+input, select { width: 100%; height: 100%; padding: 0px; margin: 0px; }
+
+.buttons { width: 120px; font-size: 26px !important; font-family: "Times New Roman", "Times New Roman", serif; font-style: italic;
+         text-transform: uppercase; padding: 0.5em;  font-weight: 400; letter-spacing: -2.6px; margin-bottom: 5px;
+         color: #0a0a0a ; text-decoration: none; }
+
+.buttons:hover { color: #b20e10 ; }
+
+#map { height: 100%; width: 100%; }
+
+.search { width: 30%; height: 100%; padding: 0px; text-align: center; float: left; }
+
+.field, .value, .edit, .submit { }
+
+.field, .value, .submit { height: 30px;  }
+
+.field { width: 100px; }
+
+.value { width: 300px; color: #b20e10 ; }
+
+.submit { width: 400px;}
+
+.edit { float: right; margin: none; width: 20px; height: 20px; }
+
+.choose { width: 200px; height: 30px;}
