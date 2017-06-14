@@ -1,6 +1,6 @@
 <?php
 
-	require("../../../../../config.php");
+	require("/home/kirikotk/config.php");
 
 	// see fail peab olema siis seotud kõigiga kus
 	// tahame sessiooni kasutada
