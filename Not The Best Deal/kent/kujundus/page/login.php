@@ -13,7 +13,7 @@
 
 	// kui on sisseloginud siis suunan data lehele
 	if (isset($_SESSION["userId"])) {
-		header("Location: a_avaleht.html");
+		header("Location: a_otsing.php");
 		exit();
 	}
 
@@ -30,7 +30,23 @@
 	}
 
 ?>
+<!DOCTYPE html>
 
+<html lang="et">
+<head>
+		<meta charset="UTF-8">
+		<title>Avaleht</title>
+    <link href="../css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../css/stiil.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <a href="a_otsing.php"><button class="buttons">OTSING</button></a>
+  <a href="lisamine.php"><button class="buttons">LISAMINE</button></a>
+<table>
+<tbody>
+
+  <tr>
+      <td><p>Tere tulemast administraatori lehele!</p>
 <div class="container">
 	<div class="row">
 
@@ -60,3 +76,12 @@
 
 	</div>
 </div>
+</td>
+  </tr>
+</tbody>
+
+</table>
+
+
+</body>
+</html>

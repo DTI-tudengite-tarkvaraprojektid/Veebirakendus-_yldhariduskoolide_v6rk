@@ -8,11 +8,6 @@
 	require("../class/Event.class.php");
 	$Event = new Event($mysqli);
 
-	if(isset($_GET["delete"])){
-		$Event->deletePerson($_GET["id"]);
-		header("Location: a_otsing.php");
-		exit();
-	}
 
 
 
@@ -49,44 +44,32 @@
 
     <table id="content">
     <tbody>
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
-      <tr>
-          <td class="field"><p>KOOLI NIMI </p></td>
-          <td class="value"><p id="name" name="name" type="text"><?php echo $p->name;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
-      </tr>
-    	<tr>
-          <td class="field"><p>KOOLI TÜÜP </p></td>
-          <td class="value"><p id="type" name="type" type="text"><?=$p->type;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
-      </tr>
-    	<tr>
-          <td class="field"><p>MAAKOND </p></td>
-          <td class="value"><p id="county" name="county" type="text"><?=$p->county;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
-      </tr>
-    	<tr>
-          <td class="field"><p>VALD/LINN </p></td>
-          <td class="value"><p id="city" name="city" type="text"><?=$p->city;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
-      </tr>
-      <tr>
-          <td class="field"><p>ALEVIK/LINNAOSA </p></td>
-          <td class="value"><p id="parish" name="parish" type="text"><?=$p->parish;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
-      </tr>
-      <tr>
-          <td class="field"><p>ADDRESS </p></td>
-          <td class="value"><p id="address" name="address" type="text"><?=$p->address;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
-      </tr>
-      <tr>
-          <td class="field"><p>POSTCODE </p></td>
-          <td class="value"><p id="postcode" name="postcode" type="text"><?=$p->postcode;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
-      </tr>
-      <tr>
-          <td class="field"><p>WEBPAGE </p></td>
-          <td class="value"><p id="webpage" name="webpage" type="text"><?=$p->webpage;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
-      </tr>
+    
+	<?php
+		
+			$html = "<tr>";
+			$html .= "<td class='choose'>
+				<a href='kooli_muutmine.php?id=".$p->id."'>
+					<span class='glyphicon glyphicon-pencil'></span> Muuda kooli infot
+				</a>
+				</td>";
 
-      </form>
-    </tbody>
-    </table>
-<input type="submit" class="buttons" name="update" value="Salvesta">
-<a href="?id=<?=$_GET["id"];?>&delete=true">kustuta</a>
-    </body>
-    </html>
+			$html .= "<td class='choose'>
+				<a href='aasta_lisamine.php?id=".$p->id."'>
+					<span class='glyphicon glyphicon-pencil'></span> Muuda õppeaasta info
+				</a>
+				</td>";
+			$html .= "</tr>";
+
+
+
+			$html .= "</tbody>";
+  	$html .= "</table>";
+    $html .= "</body>";
+    $html .= "</html>";
+  	echo $html;
+
+  ?>
+
+
+	

@@ -66,57 +66,56 @@
 <html lang="et">
 <head>
 		<meta charset="UTF-8">
-		<title>Lisamine</title>
+		<title>Aasta õpilaste Lisamine</title>
 		<link href="../css/normalize.css" rel="stylesheet" type="text/css">
 		<link href="../css/stiil.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  
+  <a href="a_avaleht.html"><button class="buttons">AVALEHT</button></a>
   <a href="a_otsing.php"><button class="buttons"> OTSING</button></a>
   <a href="lisamine.php"><button class="buttons">LISAMINE</button></a>
-    <br>
-    <h2>Lisa uus kool</h2>
-    <form method="POST" >
-
-    	<label>ID</label><br>
-    	<input name="id" type="text">
-
-    	<br><br>
-		<label>Kooli nimi</label><br>
-		<input name="name" type="text">
-
-		<br><br>
-    	<label>Tüüp</label><br>
-    	<input name="type" type="text">
-
-    	<br><br>
-    	<label>Maakond</label><br>
-    	<input name="county" type="text">
-
-    	<br><br>
-    	<label>Linn</label><br>
-    	<input name="parish" type="text">
-
-    	<br><br>
-    	<label>Linna osa</label><br>
-    	<input name="city" type="text">
-
-    	<br><br>
-    	<label>Address</label><br>
-    	<input name="address" type="text">
-
-    	<br><br>
-    	<label>Postcode</label><br>
-    	<input name="postcode" type="text">
-
-    	<br><br>
-    	<label>Veebileht</label><br>
-    	<input name="webpage" type="text">
-
-    	<br><br>
-
-    	<input type="submit" value="Salvesta">
-
+    
+	<table id="content">
+    <tbody>
+   
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
+		<tr>
+    	<td class="field">REG_ID</td>
+    	<td class="value"><input name="id" type="number" disabled></td>
+		</tr>
+    	<tr>
+    	<td class="field">Õppeaasta</td>
+    	<td class="value"><input name="year" type="number"></td>
+		</tr>
+		<tr>
+    	<td class="field">Õpilaste arv</td>
+    	<td class="value"><input name="students" type="number"></td>
+		</tr>
+		<tr>
+    	<td class="field">Poiste arv</td>
+    	<td class="value"><input name="boys" type="number"></td>
+		</tr>
+		<tr>
+    	<td class="field">Tüdrukute arv</td>
+    	<td class="value"><input name="girls" type="number"></td>
+		</tr>
+		<tr>
+    	<td class="field">Õpetajate arv</td>
+    	<td class="value"><input name="teachers" type="number"></td>
+		</tr>
+		<tr>
+    	<td class="field">Õppekeel</td>
+    	<td class="value"><input name="language" type="text"></td>
+		</tr>
+		<tr>
+    	<td class="field">Märkused</td>
+    	<td class="value"><input name="notes" type="text"></td>
+		</tr>
+		<tr>
+    	<td colspan="2" class="submit"><input type="submit" value="Salvesta"></td>
+		</tr>
     </form>
+	</tbody>
+    </table>
 </body>
 </html>

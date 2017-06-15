@@ -95,7 +95,7 @@
 </head>
 <body>
 
-  <a href="a_avaleht.html"><button class="buttons">AVALEHT</button></a>
+  
   <a href="a_otsing.php"><button class="buttons"> OTSING</button></a>
   <a href="lisamine.php"><button class="buttons">LISAMINE</button></a>
   <table>
