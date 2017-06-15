@@ -1,6 +1,6 @@
 var people;
 var schoolName;
-var startYear = 1920;
+var startYear;
 var regID;
 window.onload = function(){
             // get school data
@@ -32,6 +32,9 @@ function getPeople(){
                 people = JSON.parse(xhttp.responseText);
                 console.log(JSON.parse(xhttp.responseText));
                 console.log('loaded');
+                startYear = people[0]; 
+                people.shift();
+                console.log(people);  
                 loadDia();
         }
      };

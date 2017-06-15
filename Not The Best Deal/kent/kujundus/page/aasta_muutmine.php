@@ -68,18 +68,25 @@
   <a href="a_otsing.php"><button class="buttons"> OTSING</button></a>
   <a href="lisamine.php"><button class="buttons">LISAMINE</button></a>
   <table>
-  <tbody>
+  
     <form>
   <tr>
 
     
 		<th colspan="4"><button><a href="?logout=1">Logi välja</th>
-		<th><a href="aasta_lisamine.php?id=<?php echo $m;?>">Uus aasta</th>
+		<th><a href="" id="addyear">Uus aasta</th>
   </tr>
   </form>
 
+  <script type="text/javascript" >
+  		window.onload = function(){
+			var id = location.search.substring(3);
+			document.getElementById("addyear").href="aasta_lisamine.php?id="+id;
+		}
+  </script>
+</body>
   <?php
-$m = 115;
+
 
   		$html = "<tr>";
 

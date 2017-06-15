@@ -1,5 +1,4 @@
 var schools;
-var aaderess;
 var schoolname;
 var geocoder;
 window.onload = initMap();
@@ -19,8 +18,8 @@ window.onload = initMap();
                     schools = JSON.parse(xhttp.responseText);
                     console.log(JSON.parse(xhttp.responseText));
                     console.log('loaded');
-                    //addinfo();
-                    loadMap();
+                    addinfo();
+                    //loadMap();
                     
                 }
             };
@@ -31,8 +30,9 @@ window.onload = initMap();
         //Kuvab kooli nime ja muu ingo
         function addinfo(){
 
-            document.getElementById("schoolname").innerHTML = schools[0].name;
-            //document.getElementById("webpage").innerHTML = schools[0].webpage;
+            document.getElementById("name").innerHTML = schools[0].name;
+            document.getElementById("website").innerHTML = schools[0].webpage;
+            document.getElementById("address").innerHTML = schools[0].county+", "+schools[0].parish+", "+schools[0].address;
             loadMap();
         }
 
