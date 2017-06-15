@@ -6,11 +6,17 @@ th { background-color: #F5F5F5 ; vertical-align: top; padding: 0px; margin: 0px;
 
 table, tr, td, th { border: 7px solid #F5F5F5 ; border-spacing: 0; margin: 0px; }
 
-td { width: 300px; height: 300px; }
+td { width: 800px; height: 300px; vertical-align: top;}
 
 img{ width: 100%; height: 100%;}
 
 .diagram { width: 1000px; height: 250px; }
+
+.info, .infovalue { width: 100%; height: 20px; margin: none; vertical-align: none; font-family: Arial; position: relative;  }
+
+.infovalue { background-color:#b20e10; color: white; }
+
+.infocolumn { max-height: 200px; height: 100px; }
 
 .center { width: 250px; height: 20px; text-align: center;  }
 
@@ -30,19 +36,16 @@ input, select { width: 100%; height: 100%; padding: 0px; margin: 0px; }
 
 .search { width: 30%; height: 100%; padding: 0px; text-align: center; float: left; }
 
-.field, .value, .edit, .submit { }
+.field, .value, .edit { border: 3px; }
 
-.field, .value, .submit { height: 30px;  }
+.field, .value { height: 30px; border-bottom: 1px solid black; }
 
-.field { width: 100px; }
+.field2, .value2 { height: 30px; border: none; }
 
-.value { width: 300px; color: #b20e10 ; }
+.field, .field2 { width: 100px; border-right: 1px solid black; }
 
-.submit { width: 400px;}
+.value, .value2 { width: 300px; color: #b20e10 ; }
 
 .edit { float: right; margin: none; width: 20px; height: 20px; }
 
-.choose { width: 200px; height: 30px;}
-
-.description { color: red; height: 120px; vertical-align: top; }
-
+p { font-size: 15px;}
