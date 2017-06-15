@@ -26,36 +26,37 @@
 
 
 	if ( isset($_POST["id"]) &&
-     isset($_POST["name"]) &&
-		 isset($_POST["type"]) &&
-		 isset($_POST["county"]) &&
-		 isset($_POST["city"]) &&
-		 isset($_POST["parish"]) &&
-		 isset($_POST["address"]) &&
-		 isset($_POST["postcode"]) &&
-		 isset($_POST["webpage"]) &&
+     	isset($_POST["year"]) &&
+	 	isset($_POST["REG_ID"]) &&
+		 isset($_POST["students"]) &&
+		 isset($_POST["boys"]) &&
+		 isset($_POST["girls"]) &&
+		 isset($_POST["teachers"]) &&
+		 isset($_POST["language"]) &&
+		 isset($_POST["notes"]) &&
+		 
      !empty($_POST["id"]) &&
-		 !empty($_POST["name"]) &&
-		 !empty($_POST["type"]) &&
-		 !empty($_POST["county"]) &&
-		 !empty($_POST["city"]) &&
-		 !empty($_POST["parish"]) &&
-		 !empty($_POST["address"]) &&
-		 !empty($_POST["postcode"]) &&
-		 !empty($_POST["webpage"])
+		 !empty($_POST["year"]) &&
+		 !empty($_POST["REG_ID"]) &&
+		 !empty($_POST["students"]) &&
+		 !empty($_POST["boys"]) &&
+		 !empty($_POST["girls"]) &&
+		 !empty($_POST["teachers"]) &&
+		 !empty($_POST["language"]) &&
+		 !empty($_POST["notes"])
 	) {
 
     $id = $Helper->cleanInput($_POST["id"]);
-    $name = $Helper->cleanInput($_POST["name"]);
-		$type = $Helper->cleanInput($_POST["type"]);
-		$county = $Helper->cleanInput($_POST["county"]);
-		$parish = $Helper->cleanInput($_POST["parish"]);
-		$city = $Helper->cleanInput($_POST["city"]);
-		$address = $Helper->cleanInput($_POST["address"]);
-		$postcode = $Helper->cleanInput($_POST["postcode"]);
-		$webpage = $Helper->cleanInput($_POST["webpage"]);
+    $year = $Helper->cleanInput($_POST["year"]);
+	$REG_ID = $Helper->cleanInput($_POST["REG_ID"]);
+		$students = $Helper->cleanInput($_POST["students"]);
+		$boys = $Helper->cleanInput($_POST["boys"]);
+		$girls = $Helper->cleanInput($_POST["girls"]);
+		$teachers = $Helper->cleanInput($_POST["teachers"]);
+		$language = $Helper->cleanInput($_POST["language"]);
+		$notes = $Helper->cleanInput($_POST["notes"]);
 
-		$Event->saveEvent($Helper->cleanInput($_POST["id"]), $name, $type, $county, $parish, $city, $address, $postcode, $webpage );
+		$Event->saveEventData($Helper->cleanInput($_POST["id"]), $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes);
 	}
 
 
@@ -78,14 +79,20 @@
 	<table id="content">
     <tbody>
    
+
+
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
 		<tr>
-    	<td class="field">REG_ID</td>
-    	<td class="value"><input name="id" type="number" disabled></td>
+    	<td class="field">id</td>
+    	<td class="value"><input name="id" type="number" ></td>
 		</tr>
     	<tr>
     	<td class="field">Õppeaasta</td>
     	<td class="value"><input name="year" type="number"></td>
+		</tr>
+		<tr>
+    	<td class="field">REG_ID</td>
+    	<td class="value"><input name="REG_ID" type="number"></td>
 		</tr>
 		<tr>
     	<td class="field">Õpilaste arv</td>

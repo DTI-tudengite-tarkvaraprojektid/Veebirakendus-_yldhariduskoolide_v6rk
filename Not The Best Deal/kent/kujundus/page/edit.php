@@ -1,5 +1,6 @@
 <?php
-	//edit.php
+	
+	//ühendan sessiooniga
 	require("../functions.php");
 
 	require("../class/Helper.class.php");
@@ -8,21 +9,35 @@
 	require("../class/Event.class.php");
 	$Event = new Event($mysqli);
 
+	//kui ei ole sisseloginud, suunan login lehele
+	if (!isset($_SESSION["userId"])) {
+		header("Location: login.php");
+		exit();
+	}
 
+	//kas aadressireal on logout
+	if (isset($_GET["logout"])) {
 
+		session_destroy();
 
-	//kas kasutaja uuendab andmeid
-	if(isset($_POST["update"])){
+		header("Location: login.php");
+		exit();
 
-		$Event->updatePerson($Helper->cleanInput($_POST["id"]), $Helper->cleanInput($_POST["name"]), $Helper->cleanInput($_POST["type"]), $Helper->cleanInput($_POST["county"]), $Helper->cleanInput($_POST["parish"]),$Helper->cleanInput($_POST["city"]), $Helper->cleanInput($_POST["address"]),$Helper->cleanInput($_POST["postcode"]), $Helper->cleanInput($_POST["webpage"]));
+	}
 
-		header("Location: a_koolileht.php?id=".$_POST["id"]."&success=true");
-        exit();
+	//kas aadressireal on logout
+	if (isset($_GET["logout"])) {
+
+		session_destroy();
+
+		header("Location: login.php");
+		exit();
 
 	}
 
 	//saadan kaasa id
-	$p = $Event->getSinglePerosonData($_GET["id"]);
+	$p = ($_GET["id"]);
+	
 
 
 ?>
@@ -38,7 +53,6 @@
     <script type="text/javascript" src = "../script/edit.js" ></script>
 </head>
 <body>
-  <a href="a_avaleht.html"><button class="buttons">AVALEHT</button></a>
   <a href="a_otsing.php"><button class="buttons"> OTSING</button></a>
   <a href="lisamine.php"><button class="buttons">LISAMINE</button></a>
 
@@ -47,19 +61,23 @@
     
 	<?php
 		
+
+
 			$html = "<tr>";
 			$html .= "<td class='choose'>
-				<a href='kooli_muutmine.php?id=".$p->id."'>
-					<span class='glyphicon glyphicon-pencil'></span> Muuda kooli infot
+				<a href='kooli_muutmine.php?id=".$p."'>
+					Muuda kooli infot
 				</a>
 				</td>";
 
 			$html .= "<td class='choose'>
-				<a href='aasta_lisamine.php?id=".$p->id."'>
-					<span class='glyphicon glyphicon-pencil'></span> Muuda õppeaasta info
+				<a href='aasta_muutmine.php?q=".$p."'>
+					Muuda õppeaasta info
 				</a>
 				</td>";
 			$html .= "</tr>";
+
+		
 
 
 
