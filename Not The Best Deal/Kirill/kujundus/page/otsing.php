@@ -1,5 +1,5 @@
 <?php
-	//ühendan sessiooniga
+
 	require("../functions.php");
 
 	require("../class/Helper.class.php");
@@ -8,43 +8,13 @@
 	require("../class/Event.class.php");
 	$Event = new Event($mysqli);
 
-	// otsib
-	if (isset($_GET["q"])) {
+	$q = $e = $y = $r = "";
+	if (isset($_GET["q"])) { $q = $_GET["q"]; }
+	if (isset($_GET["e"])) { $e = $_GET["e"]; }
+	if (isset($_GET["y"])) { $y = $_GET["y"]; }
+	if (isset($_GET["r"])) {  $r = $_GET["r"]; }
 
-		$q = $_GET["q"];
 
-	}
-	else {
-		//ei otsi
-		$q = "";
-	}
-	// otsib
-	if (isset($_GET["e"])) {
-		$e = $_GET["e"];
-	}
-	else {
-		//ei otsi
-		$e = "";
-	}
-	// otsib
-	if (isset($_GET["y"])) {
-		$y = $_GET["y"];
-	}
-	else {
-		//ei otsi
-		$y = "";
-	}
-	// otsib
-	if (isset($_GET["r"])) {
-		$r = $_GET["r"];
-	}
-	else {
-		//ei otsi
-		$r = "";
-	}
-
-	//vaikimisi, kui keegi mingit linki ei vajuta
-  //vaikimisi, kui keegi mingit linki ei vajuta
 	$sort = "id";
 	$order = "ASC";
 
@@ -86,10 +56,7 @@
 
   <?php
 
-
   		$html = "<tr>";
-
-
 
       $orderName = "ASC";
 			if (isset($_GET["order"]) &&
@@ -141,7 +108,6 @@
 
   		$html .= "</tr>";
 
-  		//iga liikme kohta massiivis
   		foreach ($people as $p) {
 
   			$html .= "<tr>";
