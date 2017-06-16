@@ -1,28 +1,39 @@
 function changeValue(what){
 
   var element = document.getElementById(what);
+  var inputElement = document.getElementById(what+"Input");
   var value = element.innerHTML;
   var type = '';
 
   switch (what){
     case 'name':
       type = 'nime';
+      break;
     case 'type':
       type = 'tüüpi';
+      break;
     case 'county':
       type = 'maakonda';
+      break;
     case 'city':
       type = 'valda/linna';
+      break;
     case 'parish':
       type = 'asulat/linnaosa';
+      break;
     case 'address':
       type = 'aadressi';
+      break;
     case 'postcode':
       type = 'postiindeksit';
+      break;
     case 'webpage':
       type = 'veebilehte';
-    default:
+      break;
   }
+
+    console.log(type);
+
 
   newValue = prompt("Muuda kooli "+type, value);
   if (newValue === null) {
@@ -30,7 +41,8 @@ function changeValue(what){
   }
 
   element.innerHTML = newValue;
-  document.getElementById('box1').value = newValue;
+  inputElement.value = newValue;
+  console.log(inputElement);
 
   element.parentNode.parentNode.style.backgroundColor = 'lightgray';
 }

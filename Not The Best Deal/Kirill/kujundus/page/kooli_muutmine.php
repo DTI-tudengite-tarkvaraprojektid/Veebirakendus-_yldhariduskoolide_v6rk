@@ -16,7 +16,7 @@
 
 	if(isset($_POST["update"])){
 
-		$Event->updatePerson($Helper->cleanInput($_POST["id"]), $Helper->cleanInput($_POST["name"]), $Helper->cleanInput($_POST["type"]), $Helper->cleanInput($_POST["county"]), $Helper->cleanInput($_POST["parish"]),$Helper->cleanInput($_POST["city"]), $Helper->cleanInput($_POST["address"]),$Helper->cleanInput($_POST["postcode"]), $Helper->cleanInput($_POST["webpage"]));
+		$Event->updatePerson($Helper->cleanInput($_POST["id"]), $Helper->cleanInput($_POST["name"]), $Helper->cleanInput($_POST["type"]), $Helper->cleanInput($_POST["county"]), $Helper->cleanInput($_POST["city"]),$Helper->cleanInput($_POST["parish"]), $Helper->cleanInput($_POST["address"]),$Helper->cleanInput($_POST["postcode"]), $Helper->cleanInput($_POST["webpage"]));
 
 		header("Location: a_otsing.php?id=".$_POST["id"]."&success=true");
         exit();
@@ -44,38 +44,38 @@
 
     <table id="content" class="smaller">
     <tbody>
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" onsubmit="return changeValue()" >
       <tr>
           <td class="field"><p>KOOLI NIMI </p></td>
-          <td class="value"><p id="name" name="name" type="text"><?php echo $p->name;?></p><img src="../pildid/edit.png" onclick="changeValue('name')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="name" id="nameInput" value="<?php echo $p->name;?>"><p id="name" name="name" type="text"><?php echo $p->name;?></p><img src="../pildid/edit.png" onclick="changeValue('name')" alt="Edit symbol" class="edit"></td>
       </tr>
     	<tr>
           <td class="field"><p>KOOLI TÜÜP </p></td>
-          <td class="value"><p id="type" name="type" type="text"><?=$p->type;?></p><img src="../pildid/edit.png" onclick="changeValue('type')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="type" id="typeInput" value="<?php echo $p->type;?>"><p id="type" name="type" type="text"><?php echo $p->type;?></p><img src="../pildid/edit.png" onclick="changeValue('type')" alt="Edit symbol" class="edit"></td>
       </tr>
     	<tr>
           <td class="field"><p>MAAKOND </p></td>
-          <td class="value"><p id="county" name="county" type="text"><?=$p->county;?></p><img src="../pildid/edit.png" onclick="changeValue('county')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="county" id="countyInput" value="<?php echo $p->county;?>"><p id="county" name="county" type="text"><?php echo $p->county;?></p><img src="../pildid/edit.png" onclick="changeValue('county')" alt="Edit symbol" class="edit"></td>
       </tr>
     	<tr>
           <td class="field"><p>VALD/LINN </p></td>
-          <td class="value"><p id="city" name="city" type="text"><?=$p->city;?></p><img src="../pildid/edit.png" onclick="changeValue('city')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="city" id="cityInput" value="<?php echo $p->city;?>"><p id="city" name="city" type="text"><?php echo $p->city;?></p><img src="../pildid/edit.png" onclick="changeValue('city')" alt="Edit symbol" class="edit"></td>
       </tr>
       <tr>
           <td class="field"><p>ALEVIK/LINNAOSA </p></td>
-          <td class="value"><p id="parish" name="parish" type="text"><?=$p->parish;?></p><img src="../pildid/edit.png" onclick="changeValue('parish')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="parish" id="parishInput" value="<?php echo $p->parish;?>"><p id="parish" name="parish" type="text"><?php echo $p->parish;?></p><img src="../pildid/edit.png" onclick="changeValue('parish')" alt="Edit symbol" class="edit"></td>
       </tr>
       <tr>
           <td class="field"><p>ADDRESS </p></td>
-          <td class="value"><p id="address" name="address" type="text"><?=$p->address;?></p><img src="../pildid/edit.png" onclick="changeValue('address')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="address" id="addressInput" value="<?php echo $p->address;?>"><p id="address" name="address" type="text"><?php echo $p->address;?></p><img src="../pildid/edit.png" onclick="changeValue('address')" alt="Edit symbol" class="edit"></td>
       </tr>
       <tr>
           <td class="field"><p>POSTCODE </p></td>
-          <td class="value"><p id="postcode" name="postcode" type="text"><?=$p->postcode;?></p><img src="../pildid/edit.png" onclick="changeValue('postcode')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="postcode" id="postcodeInput" value="<?php echo $p->postcode;?>"><p id="postcode" name="postcode" type="text"><?php echo $p->postcode;?></p><img src="../pildid/edit.png" onclick="changeValue('postcode')" alt="Edit symbol" class="edit"></td>
       </tr>
       <tr>
           <td class="field"><p>WEBPAGE </p></td>
-          <td class="value"><p id="webpage" name="webpage" type="text"><?=$p->webpage;?></p><img src="../pildid/edit.png" onclick="changeValue('webpage')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="webpage" id="webpageInput" value="<?php echo $p->webpage;?>"><p id="webpage" name="webpage" type="text"><?php echo $p->webpage;?></p><img src="../pildid/edit.png" onclick="changeValue('webpage')" alt="Edit symbol" class="edit"></td>
       </tr>
       <tr>
       <td colspan="2" class="submit"><input type="submit" name="update" value="Salvesta"></td>
