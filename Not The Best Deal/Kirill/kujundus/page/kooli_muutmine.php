@@ -14,16 +14,33 @@
 		exit();
 	}
 
+
 	if(isset($_POST["update"])){
 
-		$Event->updatePerson($Helper->cleanInput($_POST["id"]), $Helper->cleanInput($_POST["name"]), $Helper->cleanInput($_POST["type"]), $Helper->cleanInput($_POST["county"]), $Helper->cleanInput($_POST["city"]),$Helper->cleanInput($_POST["parish"]), $Helper->cleanInput($_POST["address"]),$Helper->cleanInput($_POST["postcode"]), $Helper->cleanInput($_POST["webpage"]));
+        var_dump($_POST);
+
+        $id = $Helper->cleanInput($_POST["id"]);
+        $name = $Helper->cleanInput($_POST["name"]);
+		$type = $Helper->cleanInput($_POST["type"]);
+		$county = $Helper->cleanInput($_POST["county"]);
+		$city = $Helper->cleanInput($_POST["city"]);
+        $parish = $Helper->cleanInput($_POST["parish"]);
+		$address = $Helper->cleanInput($_POST["address"]);
+		$postcode = $Helper->cleanInput($_POST["postcode"]);
+		$webpage = $Helper->cleanInput($_POST["webpage"]);
+
+		$Event->updatePerson($id, $name, $type, $county, $city, $parish, $address, $postcode, $webpage);
 
 		header("Location: a_otsing.php?id=".$_POST["id"]."&success=true");
         exit();
 
 	}
 
-	$p = $Event->getSinglePerosonData($_GET["id"]);
+    if(isset($_POST["id"])){
+        $p = $Event->getSinglePerosonData($_POST["id"]);
+    }else{
+	    $p = $Event->getSinglePerosonData($_GET["id"]);
+    }
 
 
 ?>
@@ -44,10 +61,10 @@
 
     <table id="content" class="smaller">
     <tbody>
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" onsubmit="return changeValue()" >
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
       <tr>
           <td class="field"><p>KOOLI NIMI </p></td>
-          <td class="value"><input type="hidden" name="name" id="nameInput" value="<?php echo $p->name;?>"><p id="name" name="name" type="text"><?php echo $p->name;?></p><img src="../pildid/edit.png" onclick="changeValue('name')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="id" value="<?php echo $_GET['id'];?>"><input type="hidden" name="name" id="nameInput" value="<?php echo $p->name;?>"><p id="name" name="name" type="text"><?php echo $p->name;?></p><img src="../pildid/edit.png" onclick="changeValue('name')" alt="Edit symbol" class="edit"></td>
       </tr>
     	<tr>
           <td class="field"><p>KOOLI TÜÜP </p></td>

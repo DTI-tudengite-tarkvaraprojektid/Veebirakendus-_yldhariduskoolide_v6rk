@@ -50,6 +50,7 @@ function changeValue(what){
 function changeYearValue(what){
 
   var element = document.getElementById(what);
+  var inputElement = document.getElementById(what+"Input");
   var value = element.innerHTML;
   var type = '';
 
@@ -78,6 +79,8 @@ function changeYearValue(what){
   }
 
   element.innerHTML = newValue;
+    inputElement.value = newValue;
+  console.log(inputElement);
 
   element.parentNode.parentNode.style.backgroundColor = 'lightgray';
 }

@@ -15,9 +15,18 @@
 
 	if(isset($_POST["update"])){
 
-		$Event->updatePersonData($Helper->cleanInput($_POST["id"]), $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes);
+         $id = $Helper->cleanInput($_POST["id"]);
+        $year = $Helper->cleanInput($_POST["year"]);
+        $REG_ID = $Helper->cleanInput($_POST["REG_ID"]);
+		$students = $Helper->cleanInput($_POST["students"]);
+		$boys = $Helper->cleanInput($_POST["boys"]);
+		$girls = $Helper->cleanInput($_POST["girls"]);
+        $teachers = $Helper->cleanInput($_POST["teachers"]);
+		$language = $Helper->cleanInput($_POST["language"]);
+		$notes = $Helper->cleanInput($_POST["notes"]);
+		
 
-				$Event->updatePerson($Helper->cleanInput($_POST["id"]), $Helper->cleanInput($_POST["year"]), $Helper->cleanInput($_POST["REG_ID"]), $Helper->cleanInput($_POST["students"]), $Helper->cleanInput($_POST["boys"]),$Helper->cleanInput($_POST["girls"]), $Helper->cleanInput($_POST["teachers"]),$Helper->cleanInput($_POST["language"]), $Helper->cleanInput($_POST["notes"]));
+		$Event->updatePersonData($id, $year, $students, $boys, $girls, $teachers, $language, $notes);
 
 		header("Location: aasta_muutmine.php?id=".$_POST["id"]."&success=true");
         exit();
@@ -49,31 +58,34 @@
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
       <tr>
           <td class="field"><p>Õppeaasta </p></td>
-          <td class="value"><p id="year" name="year" type="text"><?php echo $p->year;?></p><img src="../pildid/edit.png" onclick="changeYearValue('year')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="id" value="<?php echo $_GET['id'];?>">
+          <input type="hidden" name="REG_ID" value="<?php echo $_GET['REG_ID'];?>">
+          <input type="hidden" name="year" id="yearInput" value="<?php echo $p->year;?>">
+          <p id="year" name="year" type="text"><?php echo $p->year;?></p><img src="../pildid/edit.png" onclick="changeYearValue('year')" alt="Edit symbol" class="edit"></td>
       </tr>
     	<tr>
           <td class="field"><p>Õpilaste arv </p></td>
-          <td class="value"><p id="students" name="students" type="text"><?=$p->students;?></p><img src="../pildid/edit.png" onclick="changeYearValue('students')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="students" id="studentsInput" value="<?php echo $p->students;?>"><p id="students" name="students" type="text"><?=$p->students;?></p><img src="../pildid/edit.png" onclick="changeYearValue('students')" alt="Edit symbol" class="edit"></td>
       </tr>
     	<tr>
           <td class="field"><p>Poiste arv </p></td>
-          <td class="value"><p id="boys" name="boys" type="text"><?=$p->boys;?></p><img src="../pildid/edit.png" onclick="changeYearValue('boys')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="boys" id="boysInput" value="<?php echo $p->boys;?>"><p id="boys" name="boys" type="text"><?=$p->boys;?></p><img src="../pildid/edit.png" onclick="changeYearValue('boys')" alt="Edit symbol" class="edit"></td>
       </tr>
     	<tr>
           <td class="field"><p>Tüdrukute arv </p></td>
-          <td class="value"><p id="girls" name="girls" type="text"><?=$p->girls;?></p><img src="../pildid/edit.png" onclick="changeYearValue('girls')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="girls" id="girlsInput" value="<?php echo $p->girls;?>"><p id="girls" name="girls" type="text"><?=$p->girls;?></p><img src="../pildid/edit.png" onclick="changeYearValue('girls')" alt="Edit symbol" class="edit"></td>
       </tr>
       <tr>
           <td class="field"><p>Õpetajate arv </p></td>
-          <td class="value"><p id="teachers" name="teachers" type="text"><?=$p->teachers;?></p><img src="../pildid/edit.png" onclick="changeYearValue('teachers')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="teachers" id="teachersInput" value="<?php echo $p->teachers;?>"><p id="teachers" name="teachers" type="text"><?=$p->teachers;?></p><img src="../pildid/edit.png" onclick="changeYearValue('teachers')" alt="Edit symbol" class="edit"></td>
       </tr>
       <tr>
           <td class="field"><p>Õppekeel </p></td>
-          <td class="value"><p id="language" name="language" type="text"><?=$p->language;?></p><img src="../pildid/edit.png" onclick="changeYearValue('language')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="language" id="languageInput" value="<?php echo $p->language;?>"><p id="language" name="language" type="text"><?=$p->language;?></p><img src="../pildid/edit.png" onclick="changeYearValue('language')" alt="Edit symbol" class="edit"></td>
       </tr>
       <tr>
           <td class="field"><p>Märkused </p></td>
-          <td class="value"><p id="notes" name="notes" type="text"><?=$p->notes;?></p><img src="../pildid/edit.png" onclick="changeYearValue('notes')" alt="Edit symbol" class="edit"></td>
+          <td class="value"><input type="hidden" name="notes" id="notesInput" value="<?php echo $p->notes;?>"><p id="notes" name="notes" type="text"><?=$p->notes;?></p><img src="../pildid/edit.png" onclick="changeYearValue('notes')" alt="Edit symbol" class="edit"></td>
       </tr>
       <tr>
       <td colspan="2" class="submit"><input type="submit" name="update" value="Salvesta"></td>
