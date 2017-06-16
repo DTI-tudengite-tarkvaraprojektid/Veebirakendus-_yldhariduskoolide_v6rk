@@ -67,20 +67,17 @@
 <html lang="et">
 <head>
 		<meta charset="UTF-8">
-		<title>Aasta õpilaste Lisamine</title>
+		<title>Uue õppeaasta info Lisamine</title>
 		<link href="../css/normalize.css" rel="stylesheet" type="text/css">
 		<link href="../css/stiil.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <a href="a_avaleht.html"><button class="buttons">AVALEHT</button></a>
   <a href="a_otsing.php"><button class="buttons"> OTSING</button></a>
   <a href="lisamine.php"><button class="buttons">LISAMINE</button></a>
     
-	<table id="content">
+	<table id="content" class="smaller">
     <tbody>
    
-
-
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
 		<tr>
     	<td class="field">id</td>

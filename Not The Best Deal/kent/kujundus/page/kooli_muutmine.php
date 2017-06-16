@@ -43,11 +43,10 @@
     <script type="text/javascript" src = "../script/edit.js" ></script>
 </head>
 <body>
-  <a href="a_avaleht.html"><button class="buttons">AVALEHT</button></a>
   <a href="a_otsing.php"><button class="buttons"> OTSING</button></a>
   <a href="lisamine.php"><button class="buttons">LISAMINE</button></a>
 
-    <table id="content">
+    <table id="content" class="smaller">
     <tbody>
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
       <tr>
@@ -82,11 +81,14 @@
           <td class="field"><p>WEBPAGE </p></td>
           <td class="value"><p id="webpage" name="webpage" type="text"><?=$p->webpage;?></p><img src="../pildid/edit.png" onclick="changeValue('webpage')" alt="Edit symbol" class="edit"></td>
       </tr>
+      <tr>
+      <td colspan="2" class="submit"><input type="submit" name="update" value="Salvesta"></td>
+      </tr>
+      
 
       </form>
     </tbody>
     </table>
-<input type="submit" class="buttons" name="update" value="Salvesta">
 <a href="?id=<?=$_GET["id"];?>&delete=true">kustuta</a>
     </body>
     </html>

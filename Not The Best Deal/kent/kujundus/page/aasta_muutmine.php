@@ -63,8 +63,6 @@
 
 </head>
 <body>
-
-  <a href="a_avaleht.html"><button class="buttons">AVALEHT</button></a>
   <a href="a_otsing.php"><button class="buttons"> OTSING</button></a>
   <a href="lisamine.php"><button class="buttons">LISAMINE</button></a>
   <table>
@@ -72,9 +70,8 @@
     <form>
   <tr>
 
-    
-		<th colspan="4"><button><a href="?logout=1">Logi välja</th>
-		<th><a href="" id="addyear">Uus aasta</th>
+    	<th colspan="4"><a href="" id="addyear">Lisa uue õppeaasta info</th>
+		<th><button><a href="?logout=1">Logi välja</th>
   </tr>
   </form>
 
