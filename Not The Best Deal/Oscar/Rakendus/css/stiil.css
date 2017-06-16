@@ -24,6 +24,8 @@ img{ width: 100%; height: 100%}
 
 .infocolumn { max-height: 200px; height: 100px; }
 
+
+
 .center { width: 250px; height: 20px; text-align: center;  }
 
 .center2 { width: 100%; height: 30px; text-align: center; }
@@ -104,9 +106,6 @@ label:hover{
   background-color: #b20e10 ;
 }
 
-label.last{
-  
-}
 
 ul ul li{
   padding: 0px;
