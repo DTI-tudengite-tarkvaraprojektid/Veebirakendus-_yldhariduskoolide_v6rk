@@ -1,5 +1,4 @@
 <?php
-	//ühendan sessiooniga
 	require("../functions.php");
 
 	require("../class/Helper.class.php");
@@ -8,43 +7,41 @@
 	require("../class/Event.class.php");
 	$Event = new Event($mysqli);
 
-	// otsib
-	if (isset($_GET["q"])) {
-
-		$q = $_GET["q"];
-
-	}
-	else {
-		//ei otsi
-		$q = "";
-	}
-	// otsib
-	if (isset($_GET["e"])) {
-		$e = $_GET["e"];
-	}
-	else {
-		//ei otsi
-		$e = "";
-	}
-	// otsib
-	if (isset($_GET["y"])) {
-		$y = $_GET["y"];
-	}
-	else {
-		//ei otsi
-		$y = "";
-	}
-	// otsib
-	if (isset($_GET["r"])) {
-		$r = $_GET["r"];
-	}
-	else {
-		//ei otsi
-		$r = "";
+	if(isset($_GET["addagain"])){
+		$Event->addAgainPerson($_GET["id"]);
+		header("Location: a_otsing_del.php");
+		exit();
 	}
 
-	//vaikimisi, kui keegi mingit linki ei vajuta
-  //vaikimisi, kui keegi mingit linki ei vajuta
+	if (!isset($_SESSION["userId"])) {
+		header("Location: login.php");
+		exit();
+	}
+
+	if (isset($_GET["logout"])) {
+
+		session_destroy();
+
+		header("Location: login.php");
+		exit();
+
+	}
+
+	if (isset($_GET["logout"])) {
+
+		session_destroy();
+
+		header("Location: login.php");
+		exit();
+
+	}
+
+	$q = $e = $y = $r = "";
+	if (isset($_GET["q"])) { $q = $_GET["q"]; }
+	if (isset($_GET["e"])) { $e = $_GET["e"]; }
+	if (isset($_GET["y"])) { $y = $_GET["y"]; }
+	if (isset($_GET["r"])) {  $r = $_GET["r"]; }
+
 	$sort = "id";
 	$order = "ASC";
 
@@ -53,7 +50,7 @@
 		$order = $_GET["order"];
 	}
 
-	$people = $Event->getAllPeople($q, $sort, $order, $e, $r, $y);
+	$people = $Event->getDelPeople($q, $sort, $order, $e, $r, $y);
 
 
 ?>
@@ -69,8 +66,9 @@
 </head>
 <body>
 
-  <a href="avaleht.html"><button class="buttons">AVALEHT</button></a>
-  <a href="otsing.php"><button class="buttons"> OTSING</button></a>
+  <a href="a_avaleht.html"><button class="buttons">AVALEHT</button></a>
+  <a href="a_otsing.php"><button class="buttons"> OTSING</button></a>
+  <a href="lisamine.php"><button class="buttons">LISAMINE</button></a>
   <table>
   <tbody>
     <form>
@@ -81,6 +79,7 @@
   	<th><input type="search" class="center2" placeholder="Linnaosa/asula" name="r" value="<?=$r;?>">
       <input type="submit" class="buttons search" value="Otsi">
     </th>
+		<th><button><a href="?logout=1">Logi välja</th>
   </tr>
   </form>
 
@@ -115,7 +114,8 @@
        							Maakond
        					 </th>";
 
-			$orderParish = "ASC";
+
+                 $orderParish = "ASC";
            					 if (isset($_GET["order"]) &&
            						 $_GET["order"] == "ASC" &&
            						 $_GET["sort"] == "parish" ) {
@@ -126,7 +126,8 @@
            							Vald/linn
            					 </th>";
 
-			$orderCity = "ASC";
+
+                     $orderCity = "ASC";
                			if (isset($_GET["order"]) &&
                				$_GET["order"] == "ASC" &&
                				$_GET["sort"] == "city" ) {
@@ -137,21 +138,23 @@
                							Linnaosa/asula
                					 </th>";
 
+											$html .= "<th class='center'>Muuda</th>";
 
 
   		$html .= "</tr>";
 
-  		//iga liikme kohta massiivis
   		foreach ($people as $p) {
 
   			$html .= "<tr>";
-  				$html .= "<td class='center'><a href='koolileht.html?schoolname=".$p->name."'>".$p->name."</td>";
+  				$html .= "<td class='center'>".$p->name."</td>";
   				$html .= "<td class='center'>".$p->county."</td>";
-				$html .= "<td class='center'>".$p->parish."</td>";
-				$html .= "<td class='center'>".$p->city."</td>";
-
-
-
+  				$html .= "<td class='center'>".$p->parish."</td>";
+  				$html .= "<td class='center'>".$p->city."</td>";
+					$html .= "<td class='center'>
+				<a href='editdeleted.php?id=".$p->id."'>
+					<span class='glyphicon glyphicon-pencil'></span> Taasta
+				</a>
+				</td>";
 
   			$html .= "</tr>";
 

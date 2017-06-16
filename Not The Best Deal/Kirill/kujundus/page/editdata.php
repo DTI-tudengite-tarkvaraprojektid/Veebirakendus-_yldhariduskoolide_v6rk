@@ -1,5 +1,4 @@
 <?php
-	//edit.php
 	require("../functions.php");
 
 	require("../class/Helper.class.php");
@@ -14,19 +13,17 @@
 		exit();
 	}
 
-
-
-	//kas kasutaja uuendab andmeid
 	if(isset($_POST["update"])){
 
 		$Event->updatePersonData($Helper->cleanInput($_POST["id"]), $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes);
 
-		header("Location: a_koolileht.php?id=".$_POST["id"]."&success=true");
+				$Event->updatePerson($Helper->cleanInput($_POST["id"]), $Helper->cleanInput($_POST["year"]), $Helper->cleanInput($_POST["REG_ID"]), $Helper->cleanInput($_POST["students"]), $Helper->cleanInput($_POST["boys"]),$Helper->cleanInput($_POST["girls"]), $Helper->cleanInput($_POST["teachers"]),$Helper->cleanInput($_POST["language"]), $Helper->cleanInput($_POST["notes"]));
+
+		header("Location: aasta_muutmine.php?id=".$_POST["id"]."&success=true");
         exit();
 
 	}
 
-	//saadan kaasa id
 	$p = $Event->getSinglePerosonDataData($_GET["id"]);
 
 
