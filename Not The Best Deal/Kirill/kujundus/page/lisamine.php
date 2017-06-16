@@ -63,58 +63,78 @@
 
 <html lang="et">
 <head>
-		<meta charset="UTF-8">
-		<title>Lisamine</title>
-		<link href="../css/normalize.css" rel="stylesheet" type="text/css">
-		<link href="../css/stiil.css" rel="stylesheet" type="text/css">
+        <meta charset="UTF-8">
+        <title>Uue kooli lisamine</title>
+        <link href="../css/normalize.css" rel="stylesheet" type="text/css">
+        <link href="../css/stiil.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
-  <a href="a_otsing.php"><button class="buttons"> OTSING</button></a>
+ <a href="a_otsing.php"><button class="buttons"> OTSING</button></a>
   <a href="lisamine.php"><button class="buttons">LISAMINE</button></a>
-    <br>
-    <h2>Lisa uus kool</h2>
-    <form method="POST" >
 
-    	<label>ID</label><br>
-    	<input name="id" type="text">
+  <table id="content" class="smaller">
+    <tbody>
 
-    	<br><br>
-		<label>Kooli nimi</label><br>
-		<input name="name" type="text">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
+        <tr>
+        <td class="field">registri kood</td>
+        <td class="value">
+        <input name="id" type="text">
+        </td></tr>
 
-		<br><br>
-    	<label>Tüüp</label><br>
-    	<input name="type" type="text">
+       <tr>
+        <td class="field">kooli nimi</td>
+        <td class="value">
+        <input name="name" type="text">
+        </td></tr>
 
-    	<br><br>
-    	<label>Maakond</label><br>
-    	<input name="county" type="text">
+        <tr>
+        <td class="field">tüüp</td>
+        <td class="value">
+        <input name="type" type="text">
+        </td></tr>
 
-    	<br><br>
-    	<label>Linn</label><br>
-    	<input name="parish" type="text">
+       <tr>
+        <td class="field">maakond</td>
+        <td class="value">
+        <input name="county" type="text">
+        </td></tr>
 
-    	<br><br>
-    	<label>Linna osa</label><br>
-    	<input name="city" type="text">
+       <tr>
+        <td class="field">vald/linn</td>
+        <td class="value">
+        <input name="parish" type="text">
+        </td></tr>
 
-    	<br><br>
-    	<label>Address</label><br>
-    	<input name="address" type="text">
+       <tr>
+        <td class="field">asula/linnaosa</td>
+        <td class="value">
+        <input name="city" type="text">
+        </td></tr>
 
-    	<br><br>
-    	<label>Postcode</label><br>
-    	<input name="postcode" type="text">
+       <tr>
+        <td class="field">aadress</td>
+        <td class="value">
+        <input name="address" type="text">
+        </td></tr>
 
-    	<br><br>
-    	<label>Veebileht</label><br>
-    	<input name="webpage" type="text">
+       <tr>
+        <td class="field">postiindeks</td>
+        <td class="value">
+        <input name="postcode" type="text">
+        </td></tr>
 
-    	<br><br>
+       <tr>
+        <td class="field">veebileht</td>
+        <td class="value">
+        <input name="webpage" type="text">
+        </td></tr>
 
-    	<input type="submit" value="Salvesta">
 
+        <tr>
+        <td colspan="2" class="submit"><input type="submit" value="Salvesta"></td>
+        </tr>
     </form>
 </body>
 </html>

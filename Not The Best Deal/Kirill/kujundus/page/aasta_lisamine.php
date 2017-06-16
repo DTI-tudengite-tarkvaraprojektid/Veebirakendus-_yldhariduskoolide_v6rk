@@ -23,7 +23,7 @@
 
 	$getId = '';
 	if(isset($_GET["id"])){ $getId = $_GET["id"]; }
-
+	var_dump($_POST);
 
 	if ( isset($_POST["id"]) &&
      	isset($_POST["year"]) &&
@@ -46,9 +46,10 @@
 		 !empty($_POST["notes"])
 	) {
 
-    $id = $Helper->cleanInput($_POST["id"]);
+		//$id = $year.$REG_ID;
+		$id = $Helper->cleanInput($_POST["id"]);
     $year = $Helper->cleanInput($_POST["year"]);
-	$REG_ID = $Helper->cleanInput($_POST["REG_ID"]);
+		$REG_ID = $Helper->cleanInput($_POST["REG_ID"]);
 		$students = $Helper->cleanInput($_POST["students"]);
 		$boys = $Helper->cleanInput($_POST["boys"]);
 		$girls = $Helper->cleanInput($_POST["girls"]);
@@ -80,18 +81,18 @@
 
 
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
-		<tr>
-    	<td class="field">id</td>
-    	<td class="value"><input name="id" type="number" ></td>
-		</tr>
-    	<tr>
+    <form method="post" >
+			<tr>
+				<td class="field">ID</td>
+				<td class="value"><input name="id" type="number"></td>
+			</tr>
+    <tr>
     	<td class="field">Õppeaasta</td>
     	<td class="value"><input name="year" type="number"></td>
 		</tr>
 		<tr>
     	<td class="field">REG_ID</td>
-    	<td class="value"><input disabled name="REG_ID" type="number" value="<?=$getId;?>"></td>
+    	<td class="value"><p><?=$getId;?></p><input type="hidden" name="REG_ID" type="number" value="<?=$getId;?>"></td>
 		</tr>
 		<tr>
     	<td class="field">Õpilaste arv</td>

@@ -68,6 +68,11 @@
 					Muuda õppeaasta info
 				</a>
 				</td>";
+				$html .= "<td class='choose'>
+					<a href='direktori_muutmine.php?q=".$p."'>
+						Muuda direktori info
+					</a>
+					</td>";
 			$html .= "</tr>";
 
 

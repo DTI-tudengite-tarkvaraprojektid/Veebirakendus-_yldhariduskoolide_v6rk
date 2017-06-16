@@ -30,7 +30,24 @@ class Event {
     $stmt = $this->connection->prepare("INSERT INTO s_data (id, year, REG_ID, students, boys, girls, teachers, language, notes) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     echo $this->connection->error;
 
-    $stmt->bind_param("sssssssss", $id, $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes);
+    $stmt->bind_param("iiiiiiiss", $id, $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes);
+
+    if ( $stmt->execute() ) {
+    header("Location: a_otsing.php");
+    exit();
+
+    } else {
+      echo "ERROR ".$stmt->error;
+    }
+
+  }
+
+  function saveEventDirector($REG_ID, $start_year, $end_year, $principal) {
+
+    $stmt = $this->connection->prepare("INSERT INTO s_principals (REG_ID, start_year, end_year, principal) VALUE (?, ?, ?, ?)");
+    echo $this->connection->error;
+
+    $stmt->bind_param("iiis", $REG_ID, $start_year, $end_year, $principal);
 
     if ( $stmt->execute() ) {
     header("Location: a_otsing.php");
@@ -424,6 +441,69 @@ class Event {
 
   }
 
+  function getAllDirectors($q, $sort, $order) {
+
+    $allowedSort = ["REG_ID", "start_year", "end_year", "principal"];
+
+    if(!in_array($sort, $allowedSort)){
+      $sort = "principal";
+    }
+
+    $orderBy = "ASC";
+
+    if($order == "DESC") {
+      $orderBy = "DESC";
+    }
+
+    if($q != "") {
+
+      $stmt = $this->connection->prepare("
+        SELECT REG_ID, start_year, end_year, principal
+        FROM s_principals
+        WHERE deleted IS NULL
+        AND ( REG_ID LIKE ?)
+        ORDER BY $sort $orderBy
+      ");
+
+      $searchId = "%".$q."%";
+
+      $stmt->bind_param("s", $searchId);
+
+    }
+
+    else {
+
+      $stmt = $this->connection->prepare("
+        SELECT REG_ID, start_year, end_year, principal
+        FROM s_principals
+        WHERE deleted IS NULL
+        ORDER BY $sort $orderBy
+      ");
+    }
+
+
+    $stmt->bind_result($REG_ID, $start_year, $end_year, $principal);
+    $stmt->execute();
+
+    $results = array();
+
+    while ($stmt->fetch()) {
+
+      $human = new StdClass();
+      $human->REG_ID = $REG_ID;
+      $human->start_year = $start_year;
+      $human->end_year = $end_year;
+      $human->principal = $principal;
+
+
+      array_push($results, $human);
+
+    }
+
+    return $results;
+
+  }
+
   function getDelPeople($q, $sort, $order, $e, $r, $y) {
 
 		$allowedSort = ["id", "name", "type", "county", "parish", "city", "address", "postcode", "webpage"];
@@ -782,7 +862,7 @@ class Event {
 
 		}else{
 
-			header("Location: a_otsing_data.php");
+			header("Location: aasta_muutmine.php");
 			exit();
 		}
 
@@ -791,6 +871,33 @@ class Event {
 		return $p;
 
 	}
+
+  function getSinglePerosonDataDirectors($edit_principal){
+
+
+    $stmt = $this->connection->prepare("SELECT start_year, end_year, principal FROM s_principals WHERE principal=? AND deleted IS NULL");
+
+    $stmt->bind_param("s", $edit_principal);
+    $stmt->bind_result($start_year, $end_year, $principal);
+    $stmt->execute();
+
+    $p = new Stdclass();
+
+    if($stmt->fetch()){
+
+      $p->start_year = $start_year;
+      $p->end_year = $end_year;
+      $p->principal = $principal;
+
+
+
+    }
+
+    $stmt->close();
+
+    return $p;
+
+  }
 
   function getSinglePerosonDataDel($edit_id){
 
@@ -846,6 +953,21 @@ class Event {
 
     $stmt = $this->connection->prepare("UPDATE s_data SET id=?, year=?, REG_ID=?, students=?, boys=?, girls=?, teachers=?, language=?, notes=?  WHERE id=? AND deleted IS NULL");
     $stmt->bind_param("isissssss",$id, $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes);
+
+
+    if($stmt->execute()){
+
+      echo "salvestus õnnestus!";
+    }
+
+    $stmt->close();
+
+  }
+
+  function updatePersonDirector($REG_ID, $start_year, $end_year, $principal){
+
+    $stmt = $this->connection->prepare("UPDATE s_principals SET id=?, year=?, REG_ID=?, students=?, boys=?, girls=?, teachers=?, language=?, notes=?  WHERE id=? AND deleted IS NULL");
+    $stmt->bind_param("isss",$REG_ID, $start_year, $end_year, $principal);
 
 
     if($stmt->execute()){
