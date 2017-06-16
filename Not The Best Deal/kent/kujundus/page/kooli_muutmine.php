@@ -52,35 +52,35 @@
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
       <tr>
           <td class="field"><p>KOOLI NIMI </p></td>
-          <td class="value"><p id="name" name="name" type="text"><?php echo $p->name;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
+          <td class="value"><p id="name" name="name" type="text"><?php echo $p->name;?></p><img src="../pildid/edit.png" onclick="changeValue('name')" alt="Edit symbol" class="edit"></td>
       </tr>
     	<tr>
           <td class="field"><p>KOOLI TÜÜP </p></td>
-          <td class="value"><p id="type" name="type" type="text"><?=$p->type;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
+          <td class="value"><p id="type" name="type" type="text"><?=$p->type;?></p><img src="../pildid/edit.png" onclick="changeValue('type')" alt="Edit symbol" class="edit"></td>
       </tr>
     	<tr>
           <td class="field"><p>MAAKOND </p></td>
-          <td class="value"><p id="county" name="county" type="text"><?=$p->county;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
+          <td class="value"><p id="county" name="county" type="text"><?=$p->county;?></p><img src="../pildid/edit.png" onclick="changeValue('county')" alt="Edit symbol" class="edit"></td>
       </tr>
     	<tr>
           <td class="field"><p>VALD/LINN </p></td>
-          <td class="value"><p id="city" name="city" type="text"><?=$p->city;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
+          <td class="value"><p id="city" name="city" type="text"><?=$p->city;?></p><img src="../pildid/edit.png" onclick="changeValue('city')" alt="Edit symbol" class="edit"></td>
       </tr>
       <tr>
           <td class="field"><p>ALEVIK/LINNAOSA </p></td>
-          <td class="value"><p id="parish" name="parish" type="text"><?=$p->parish;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
+          <td class="value"><p id="parish" name="parish" type="text"><?=$p->parish;?></p><img src="../pildid/edit.png" onclick="changeValue('parish')" alt="Edit symbol" class="edit"></td>
       </tr>
       <tr>
           <td class="field"><p>ADDRESS </p></td>
-          <td class="value"><p id="address" name="address" type="text"><?=$p->address;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
+          <td class="value"><p id="address" name="address" type="text"><?=$p->address;?></p><img src="../pildid/edit.png" onclick="changeValue('address')" alt="Edit symbol" class="edit"></td>
       </tr>
       <tr>
           <td class="field"><p>POSTCODE </p></td>
-          <td class="value"><p id="postcode" name="postcode" type="text"><?=$p->postcode;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
+          <td class="value"><p id="postcode" name="postcode" type="text"><?=$p->postcode;?></p><img src="../pildid/edit.png" onclick="changeValue('postcode')" alt="Edit symbol" class="edit"></td>
       </tr>
       <tr>
           <td class="field"><p>WEBPAGE </p></td>
-          <td class="value"><p id="webpage" name="webpage" type="text"><?=$p->webpage;?><img src="../pildid/edit.png" onclick="changeValue()" alt="Edit symbol" class="edit"></p></td>
+          <td class="value"><p id="webpage" name="webpage" type="text"><?=$p->webpage;?></p><img src="../pildid/edit.png" onclick="changeValue('webpage')" alt="Edit symbol" class="edit"></td>
       </tr>
 
       </form>
