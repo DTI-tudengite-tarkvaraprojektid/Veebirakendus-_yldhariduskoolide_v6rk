@@ -74,11 +74,14 @@
   
   <a href="a_otsing.php"><button class="buttons"> OTSING</button></a>
   <a href="lisamine.php"><button class="buttons">LISAMINE</button></a>
-    <br>
-    <h2>Lisa uus kool</h2>
-    <form method="POST" >
-
-    	<label>ID</label><br>
+    
+   <table id="content" class="smaller">
+    <tbody>
+   
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
+		<tr>
+    	<td class="field">id</td>
+    	<td class="value">
     	<input name="id" type="text">
 
     	<br><br>

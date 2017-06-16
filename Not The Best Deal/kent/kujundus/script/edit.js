@@ -69,4 +69,3 @@ function changeYearValue(what){
   element.parentNode.parentNode.style.backgroundColor = 'lightgray';
 }
 
-
