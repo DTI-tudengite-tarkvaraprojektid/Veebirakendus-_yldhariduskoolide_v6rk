@@ -7,11 +7,14 @@ var startYear;
 var principals;
 var addchange;
 var namechange;
+//See käivitub lehe laadimisel
 window.onload = function(){
+                //Aadressi realt saadakse kooli nimi
                 schoolname = decodeURIComponent(location.search.substring(12));
                 console.log(schoolname);
                 getRegID();
         }
+        //Selle funktsiooniga saadakse vastava kooli id
         function getRegID(){
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -40,7 +43,7 @@ window.onload = function(){
             xhttp.open("GET", '../Php/getinfo.php?REG_ID='+regID, true);
             xhttp.send();
         }
-        //Kuvab kooli nime ja muu ingo
+        //Kuvab kooli nime ja muu info
         function addinfo(){
             var name = schools[0].name;
             var website =  schools[0].webpage;
@@ -115,6 +118,7 @@ window.onload = function(){
             }
         });
     }
+    //Võetakse andmebaasist igal aastal olnud õpilaste arvud
     function getPeople(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -131,6 +135,7 @@ window.onload = function(){
         xhttp.open("GET", '../Php/getpeopleinfo.php?regid='+regID, true);
         xhttp.send();          
     }
+    //kuvatakse õpilaste arvud diagrammil
     function loadDia(){
         Highcharts.chart('container1', {
 
@@ -163,6 +168,7 @@ window.onload = function(){
 
     });
 }
+//Andmebaasist võetakse kõikide direktorite nimed ja nende tööl olnud aastad
 function getprincipals(){
                   var xhttp = new XMLHttpRequest();
                   xhttp.onreadystatechange = function() {
@@ -175,7 +181,8 @@ function getprincipals(){
                   };
                   xhttp.open("GET", '../Php/getprincipals.php?REG_ID='+regID, true);
                   xhttp.send();                      
-      }
+}
+//Kuvatakse direktorite andmed lehele
 function printprincipals(){
         for (i = 0; i < principals.length; i++) { 
                   var ul = document.getElementById("principals");
@@ -188,6 +195,7 @@ function printprincipals(){
         }
     getaddchange();
 }
+//Andmebaasist võetakse aadressi muutused
 function getaddchange(){
     var xhttp = new XMLHttpRequest();
                   xhttp.onreadystatechange = function() {
@@ -201,6 +209,7 @@ function getaddchange(){
                   xhttp.open("GET", '../Php/getaddchange.php?REG_ID='+regID, true);
                   xhttp.send();
 }
+//Kuvatakse aadressi muutused lehele
 function printaddchange(){
     for (i = 0; i < addchange.length; i++) { 
                   var ul = document.getElementById("addchange");
@@ -214,6 +223,7 @@ function printaddchange(){
     
     getnamehange();
 }
+//Andmebaassit võtakse nimede muutused
 function getnamehange(){
     var xhttp = new XMLHttpRequest();
                   xhttp.onreadystatechange = function() {
@@ -227,6 +237,7 @@ function getnamehange(){
                   xhttp.open("GET", '../Php/getnamechange.php?REG_ID='+regID, true);
                   xhttp.send();
 }
+//Kuvatakse nimede muutused lehele
 function printnamehange(){
     for (i = 0; i < namechange.length; i++) { 
                   var ul = document.getElementById("namechange");
