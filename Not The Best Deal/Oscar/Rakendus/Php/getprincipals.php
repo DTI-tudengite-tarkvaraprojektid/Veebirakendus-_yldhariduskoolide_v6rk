@@ -1,5 +1,4 @@
 <?php
-
     if(!isset($_GET["REG_ID"])){ die(); }
     require ('../functions.php');
     $REG_ID = (int)$_GET["REG_ID"];

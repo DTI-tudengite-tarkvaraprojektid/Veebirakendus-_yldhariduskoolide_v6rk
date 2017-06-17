@@ -5,11 +5,10 @@ var regID;
 var people;
 var startYear;
 var principals;
-
-window.onload = initMap();
-
-        function initMap() {
-                schoolname = location.search.substring(12);
+var addchange;
+var namechange;
+window.onload = function(){
+                schoolname = decodeURIComponent(location.search.substring(12));
                 console.log(schoolname);
                 getRegID();
         }
@@ -24,10 +23,8 @@ window.onload = initMap();
                 }
             };
             xhttp.open("GET", '../Php/getregnr.php?school='+schoolname, true);
-            xhttp.send();
-                
+            xhttp.send();               
         }
-
         //Võtab andmebaasist kooli andmed
         function getSchools(){
             var xhttp = new XMLHttpRequest();
@@ -37,14 +34,12 @@ window.onload = initMap();
                     console.log(JSON.parse(xhttp.responseText));
                     console.log('loaded');
                     addinfo();
-                    //loadMap();
-                    
+                    //loadMap();                    
                 }
             };
             xhttp.open("GET", '../Php/getinfo.php?REG_ID='+regID, true);
             xhttp.send();
         }
-
         //Kuvab kooli nime ja muu ingo
         function addinfo(){
             var name = schools[0].name;
@@ -67,32 +62,24 @@ window.onload = initMap();
             document.getElementById("openyear").innerHTML = openyear;
             loadMap();
         }
-
         //Laeb googlemapsi kaardi
-        function loadMap(){
-            
+        function loadMap(){          
             //proovib leida aadressi kauadu asukohta
             var countysql = schools[0].county;
             var parishsql = schools[0].parish;
             var aadresssql = schools[0].address;
-        
-
             geocoder = new google.maps.Geocoder();
-            aadress =  decodeURIComponent(schoolname);
-            
+            aadress =  schoolname;
             console.log(aadress);
             geocoder.geocode( { 'address': aadress}, function(results, status) {
-
                 if (status == google.maps.GeocoderStatus.OK) {
                     latitude = results[0].geometry.location.lat();
                     longitude = results[0].geometry.location.lng();
                     console.log("lat: "+latitude+" long: "+longitude);
-
                     var map = new google.maps.Map(document.getElementById('map'), {
                         zoom: 17,
                         center: {lat: latitude, lng: longitude}
-                    });
-                    
+                    });                   
                     var marker = new google.maps.Marker({
                         position: {lat: latitude, lng: longitude},
                         map: map
@@ -106,23 +93,19 @@ window.onload = initMap();
                 }
             });
     getprincipals();   
-    }
-    
+    }    
     //Nime järgi asukoha leidmise funktsioon
     function makeMarker (){
             var geocoder = new google.maps.Geocoder();
             geocoder.geocode( { 'address': aadress}, function(results, status) {
-
             if (status == google.maps.GeocoderStatus.OK) {
                 latitude = results[0].geometry.location.lat();
                 longitude = results[0].geometry.location.lng();
                 console.log("lat: "+latitude+" long: "+longitude);
-
                 var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 17,
                     center: {lat: latitude, lng: longitude}
-                });
-                
+                });             
                 var marker = new google.maps.Marker({
                     position: {lat: latitude, lng: longitude},
                     map: map
@@ -132,7 +115,6 @@ window.onload = initMap();
             }
         });
     }
-
     function getPeople(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -147,25 +129,20 @@ window.onload = initMap();
         }
      };
         xhttp.open("GET", '../Php/getpeopleinfo.php?regid='+regID, true);
-        xhttp.send();
-            
+        xhttp.send();          
     }
-
     function loadDia(){
         Highcharts.chart('container1', {
 
         title: {
             text: schoolname,
         },
-
         /*subtitle: {
             text: 'Source: thesolarfoundation.com'
         },*/
-
         yAxis: { 
             title: {
-                text: 'Õpilaste arv',
-                
+                text: 'Õpilaste arv',              
             }
         },
         /*legend: {
@@ -173,13 +150,11 @@ window.onload = initMap();
             align: 'right',
             verticalAlign: 'middle'
         },*/
-
         plotOptions: {
             series: {
                 pointStart: startYear
             }
         },
-
         series: [{
             name: "Õpilaste arv",
             color: '#b71234',
@@ -195,23 +170,73 @@ function getprincipals(){
                               principals = JSON.parse(xhttp.responseText);
                               console.log("tired: "+JSON.parse(xhttp.responseText));
                               console.log('loaded');    
-                              print();   
+                              printprincipals();   
                       }
                   };
                   xhttp.open("GET", '../Php/getprincipals.php?REG_ID='+regID, true);
-                  xhttp.send();
-
-                      
+                  xhttp.send();                      
       }
-    function print(){
+function printprincipals(){
         for (i = 0; i < principals.length; i++) { 
                   var ul = document.getElementById("principals");
                   var li = document.createElement("li");
-                  var children = ul.children.length + 1
-                  li.setAttribute("id", "element"+children)
-                  var principal = principals[i].principal+" "+principals[i].start+"-"+principals[i].end;
+                  var children = ul.children.length + 1;
+                  li.setAttribute("id", "principalelement"+children);
+                  var principal = principals[i].start+"-"+principals[i].end+"   "+principals[i].principal;
                   li.appendChild(document.createTextNode(principal));
                   ul.appendChild(li);
         }
-    getPeople();
+    getaddchange();
+}
+function getaddchange(){
+    var xhttp = new XMLHttpRequest();
+                  xhttp.onreadystatechange = function() {
+                      if (this.readyState == 4 && this.status == 200) {
+                              addchange = JSON.parse(xhttp.responseText);
+                              console.log("tired: "+JSON.parse(xhttp.responseText));
+                              console.log('loaded');    
+                              printaddchange();
+                      }
+                  };
+                  xhttp.open("GET", '../Php/getaddchange.php?REG_ID='+regID, true);
+                  xhttp.send();
+}
+function printaddchange(){
+    for (i = 0; i < addchange.length; i++) { 
+                  var ul = document.getElementById("addchange");
+                  var li = document.createElement("li");
+                  var children = ul.children.length + 1;
+                  li.setAttribute("id", "addelement"+children);
+                  var add = addchange[i].year+" "+addchange[i].address;
+                  li.appendChild(document.createTextNode(add));
+                  ul.appendChild(li);
     }
+    
+    getnamehange();
+}
+function getnamehange(){
+    var xhttp = new XMLHttpRequest();
+                  xhttp.onreadystatechange = function() {
+                      if (this.readyState == 4 && this.status == 200) {
+                              namechange = JSON.parse(xhttp.responseText);
+                              console.log("tired: "+JSON.parse(xhttp.responseText));
+                              console.log('loaded');    
+                              printnamehange();
+                      }
+                  };
+                  xhttp.open("GET", '../Php/getnamechange.php?REG_ID='+regID, true);
+                  xhttp.send();
+}
+function printnamehange(){
+    for (i = 0; i < namechange.length; i++) { 
+                  var ul = document.getElementById("namechange");
+                  var li = document.createElement("li");
+                  var children = ul.children.length + 1;
+                  li.setAttribute("id", "nameelement"+children);
+                  var name = namechange[i].year+" "+namechange[i].name;
+                  li.appendChild(document.createTextNode(name));
+                  ul.appendChild(li);
+    }
+    
+    getPeople();
+}
