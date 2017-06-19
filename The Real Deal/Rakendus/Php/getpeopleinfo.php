@@ -24,8 +24,10 @@
     $stmt->bind_param("i", $regID);
     $stmt->bind_result($students);
     $stmt->execute();
-    //$v="[".$yearstart.", ".$yearend.", ";
-    $v="[";
+    $yearstart = substr($yearstart, 0, 4);
+    $v="[".$yearstart.", ";
+    //.$yearend.", ";
+    //$v="[";
     while($stmt->fetch()){
         if($count == true){
             if( $students == null ){

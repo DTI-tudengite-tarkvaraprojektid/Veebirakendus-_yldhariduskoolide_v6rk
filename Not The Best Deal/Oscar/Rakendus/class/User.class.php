@@ -45,7 +45,7 @@ class User {
 				$_SESSION["userEmail"] = $emailFromDb;
 				//echo "ERROR";
 
-				header("Location: data.php");
+				header("Location: a_otsing.php");
 				exit();
 
 			} else {
