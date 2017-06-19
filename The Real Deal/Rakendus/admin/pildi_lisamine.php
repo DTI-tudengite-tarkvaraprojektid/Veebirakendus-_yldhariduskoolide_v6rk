@@ -46,7 +46,7 @@
     <tbody>
 
     <form action="../Php/save.php" method="post" enctype="multipart/form-data">
-    <input type="text" name="REG_ID" id="REG_ID" >
+    <input type="text" name="REG_ID" id="REG_ID" hidden>
     <tr><td class="field">Pealkiri:</td><td class="value"><input type="text" name="picname" id="picname"></td></tr>
     <tr><td class="field">Mitmes pilt:</td><td class="value"><input type="number" name="picnr" id="picnr"></td></tr>
     <tr><td class="field">Valige pilt:</td><td class="value"><input type="file" name="fileToUpload" id="fileToUpload"></td></tr>
