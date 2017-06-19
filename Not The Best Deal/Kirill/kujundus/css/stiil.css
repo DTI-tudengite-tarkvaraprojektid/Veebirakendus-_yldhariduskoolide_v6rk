@@ -38,15 +38,31 @@ input, select { width: 100%; height: 100%; padding: 0px; margin: 0px; }
 
 .smaller { width: 400px; }
 
+.login { width: 300px; height: 120px;}
+
+.loginbtn { width: 100px; float: right; cursor: pointer; background-color: #F5F5F5;  }
+
+.logout { float: right; width: 100px; padding: 10px; border-radius: 20px; background-color: #F5F5F5;}
+
+a.logoutlink { text-decoration: none; }
+
 .buttons { width: 120px; font-size: 26px !important; font-family: "Times New Roman", "Times New Roman", serif; font-style: italic;
          text-transform: uppercase; padding: 0.5em;  font-weight: 400; letter-spacing: -2.6px; margin-bottom: 5px;
-         color: #0a0a0a ; text-decoration: none; }
+         color: #0a0a0a ; text-decoration: none; cursor: pointer;}
+
+.deleted { width: 160px;}
 
 .buttons:hover { color: #b20e10 ; }
 
 #map { height: 100%; width: 100%; }
 
 .submit { height: 30px; }
+
+.submitbtn { cursor: pointer; }
+
+.deletebtn { text-decoration: none;}
+
+.submitbtn:hover { color: #b20e10 ; }
 
 .search { width: 100%; height: 100%; padding: 0px; text-align: center; float: right; }
 
@@ -63,6 +79,8 @@ input, select { width: 100%; height: 100%; padding: 0px; margin: 0px; }
 .edit { float: right; margin: none; width: 20px; height: 20px; }
 
 p { font-size: 15px; padding: 0px; margin: 0px;}
+
+a { cursor: pointer; }
 
 a:link { color: black; }
 

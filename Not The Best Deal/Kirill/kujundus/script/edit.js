@@ -84,3 +84,33 @@ function changeYearValue(what){
 
   element.parentNode.parentNode.style.backgroundColor = 'lightgray';
 }
+
+function changeDirectorValue(what){
+
+  var element = document.getElementById(what);
+  var inputElement = document.getElementById(what+"Input");
+  var value = element.innerHTML;
+  var type = '';
+
+  switch (what){
+    case 'start_year':
+      type = 'alustamise aastat';
+    case 'end_year':
+      type = 'lõpetamise aastat';
+    case 'principal':
+      type = 'nime';
+
+    default:
+  }
+
+  newValue = prompt("Muuda direktori "+type, value);
+  if (newValue === null) {
+    return;
+  }
+
+  element.innerHTML = newValue;
+    inputElement.value = newValue;
+  console.log(inputElement);
+
+  element.parentNode.parentNode.style.backgroundColor = 'lightgray';
+}

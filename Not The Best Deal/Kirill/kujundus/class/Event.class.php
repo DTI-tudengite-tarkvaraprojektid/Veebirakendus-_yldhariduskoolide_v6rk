@@ -33,7 +33,7 @@ class Event {
     $stmt->bind_param("iiiiiiiss", $id, $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes);
 
     if ( $stmt->execute() ) {
-    header("Location: a_otsing.php");
+    header("Location: aasta_muutmine.php?q=".$_GET['id']);
     exit();
 
     } else {
@@ -50,7 +50,7 @@ class Event {
     $stmt->bind_param("iiis", $REG_ID, $start_year, $end_year, $principal);
 
     if ( $stmt->execute() ) {
-    header("Location: a_otsing.php");
+    header("Location: direktori_muutmine.php?q=".$_GET['id']);
     exit();
 
     } else {
@@ -809,7 +809,7 @@ class Event {
 		$stmt = $this->connection->prepare("SELECT name, type, county, parish, city, address, postcode, webpage FROM s_schools WHERE id=? AND deleted IS NULL");
 
 		$stmt->bind_param("i", $edit_id);
-		$stmt->bind_result($name, $type, $county, $city, $parish, $address, $postcode, $webpage);
+		$stmt->bind_result($name, $type, $county, $parish, $city, $address, $postcode, $webpage);
 		$stmt->execute();
 
 		$p = new Stdclass();
@@ -889,8 +889,6 @@ class Event {
       $p->end_year = $end_year;
       $p->principal = $principal;
 
-
-
     }
 
     $stmt->close();
@@ -949,11 +947,10 @@ class Event {
 
 	}
 
-  function updatePersonData($id, $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $note){
+  function updatePersonData($id, $year, $students, $boys, $girls, $teachers, $language, $note){
 
-    $stmt = $this->connection->prepare("UPDATE s_data SET id=?, year=?, REG_ID=?, students=?, boys=?, girls=?, teachers=?, language=?, notes=?  WHERE id=? AND deleted IS NULL");
-    $stmt->bind_param("isissssss",$id, $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes);
-
+    $stmt = $this->connection->prepare("UPDATE s_data SET year=?, students=?, boys=?, girls=?, teachers=?, language=?, notes=?  WHERE id=? AND deleted IS NULL");
+    $stmt->bind_param("iiiiissi",$year, $students, $boys, $girls, $teachers, $language, $notes, $id);
 
     if($stmt->execute()){
 
@@ -966,7 +963,7 @@ class Event {
 
   function updatePersonDirector($REG_ID, $start_year, $end_year, $principal){
 
-    $stmt = $this->connection->prepare("UPDATE s_principals SET id=?, year=?, REG_ID=?, students=?, boys=?, girls=?, teachers=?, language=?, notes=?  WHERE id=? AND deleted IS NULL");
+    $stmt = $this->connection->prepare("UPDATE s_principals SET REG_ID=?, start_year=?, end_year=?, principal=? WHERE principal=? AND deleted IS NULL");
     $stmt->bind_param("isss",$REG_ID, $start_year, $end_year, $principal);
 
 
@@ -981,7 +978,7 @@ class Event {
 
 	function deletePerson($id){
 
-        $database = "if16_kirikotk_4";
+    $database = "if16_kirikotk_4";
 
 		$stmt = $this->connection->prepare("
 		UPDATE s_schools SET deleted=NOW()
@@ -996,6 +993,40 @@ class Event {
 		$stmt->close();
 
 	}
+
+  function deletePersonData($id){
+
+    $database = "if16_kirikotk_4";
+
+    $stmt = $this->connection->prepare("
+    UPDATE s_data SET deleted=NOW()
+    WHERE id=? AND deleted IS NULL");
+    $stmt->bind_param("i",$id);
+
+    if($stmt->execute()){
+
+      echo "salvestus õnnestus!";
+    }
+
+    $stmt->close();
+
+  }
+
+  function deletePersonDirector($principal){
+
+    $database = "if16_kirikotk_4";
+    $stmt = $this->connection->prepare("
+    UPDATE s_principals SET deleted=NOW()
+    WHERE principal=?");
+
+    if($stmt->execute()){
+
+      echo "salvestus õnnestus!";
+    }
+
+    $stmt->close();
+
+  }
 
   function addAgainPerson($id){
 
