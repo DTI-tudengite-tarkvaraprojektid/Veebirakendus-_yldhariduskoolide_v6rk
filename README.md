@@ -1,5 +1,7 @@
 Veebirakendus: Tallinna üldhariduskoolide võrk
 ===
+-->[RAKENDUSE KASUTAJA VAADE](http://greeny.cs.tlu.ee/~oaheinla/Praktika/Veebirakendus-_yldhariduskoolide_v6rk/The%20Real%20Deal/Rakendus/page)<--
+-->[RAKENDUSE ADMINI VAADE](http://greeny.cs.tlu.ee/~oaheinla/Praktika/Veebirakendus-_yldhariduskoolide_v6rk/The%20Real%20Deal/Rakendus/admin/)<--
 ![alt text](http://www.tlu.ee/~oaheinla/pildid/kooli%20leht.PNG)
 Eesmärki ja lühikirjeldus
 ---
