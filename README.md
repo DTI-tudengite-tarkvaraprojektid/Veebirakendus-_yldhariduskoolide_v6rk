@@ -33,7 +33,8 @@ Kirill Kotkas
 
 Brigid-Ly Palkman  
 
--->[BLOGI](http://suvepraktika.cs.tlu.ee/2017/ryhm01/)<-- 
+-->[BLOGI](http://suvepraktika.cs.tlu.ee/2017/ryhm01/)<--  
+-->[DOKUMENTATSIOON](https://drive.google.com/file/d/0B3C5YL453O5BLUhJNDRNT1ZmZTA/view)<--
 
 Paigaldus
 ---
