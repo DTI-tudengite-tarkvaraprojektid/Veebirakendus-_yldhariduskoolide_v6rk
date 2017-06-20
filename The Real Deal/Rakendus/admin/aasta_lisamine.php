@@ -82,7 +82,7 @@
     <form method="post" >
     <tr>
     	<td class="field">Õppeaasta</td>
-    	<td class="value"><input name="year" type="number"></td>
+    	<td class="value"><input name="year" type="text"></td>
 		</tr>
 		<tr>
     	<td class="field">REG_ID</td>
