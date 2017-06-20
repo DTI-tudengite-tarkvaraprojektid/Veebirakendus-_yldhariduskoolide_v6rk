@@ -52,7 +52,7 @@
 <html lang="et">
 <head>
   <meta charset="UTF-8">
-  <title>Otsing</title>
+  <title>Õppeaasta muutmine</title>
   <link href="../css/normalize.css" rel="stylesheet" type="text/css">
   <link href="../css/stiil.css" rel="stylesheet" type="text/css">
 
