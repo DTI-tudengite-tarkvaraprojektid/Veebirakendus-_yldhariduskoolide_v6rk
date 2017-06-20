@@ -134,6 +134,7 @@
 				<a href='editdirector.php?director=".$p->principal."'>
 					<span class='glyphicon glyphicon-pencil'></span> Muuda
 				</a>
+				/
 				<a href='deletedirector.php?director=".$p->principal."'>
 					<span class='glyphicon glyphicon-pencil'></span> Kustuta
 				</a>
