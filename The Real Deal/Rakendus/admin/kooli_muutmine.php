@@ -50,7 +50,7 @@
 <html lang="et">
 <head>
 		<meta charset="UTF-8">
-		<title>Koolileht</title>
+		<title>Muuda kooli infot</title>
 		<link href="../css/normalize.css" rel="stylesheet" type="text/css">
 		<link href="../css/stiil.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src = "../script/edit.js" ></script>
