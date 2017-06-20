@@ -28,7 +28,7 @@
 
 		$Event->updateDirectors($start_year, $end_year, $principal);
 
-		header("Location: direktori_muutmine.php?id=".$_POST["id"]."&success=true");
+		header("Location: direktori_muutmine.php?q=".$_POST["REG_ID"]."&success=true");
         exit();
 
 	}
@@ -61,9 +61,10 @@
     <tbody>
 
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
+
 				<tr>
 	          <td class="field"><p>Direktor </p></td>
-	          <td class="value"><input type="hidden" name="principal" id="principalInput" value="<?php echo $p->principal;?>"><p id="principal" name="principal" type="text"><?php echo $p->principal;?></p></td>
+	          <td class="value"><input type="hidden" name="REG_ID" id="REG_IDInput" value="<?php echo $p->REG_ID;?>"><input type="hidden" name="principal" id="principalInput" value="<?php echo $p->principal;?>"><p id="principal" name="principal" type="text"><?php echo $p->principal;?></p></td>
 	      </tr>
 				<tr>
 	          <td class="field"><p>Alustamine </p></td>

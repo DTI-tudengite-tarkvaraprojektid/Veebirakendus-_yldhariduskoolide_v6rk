@@ -7,11 +7,6 @@
 	require("../class/Event.class.php");
 	$Event = new Event($mysqli);
 
-	if(isset($_GET["delete"])){
-		$Event->deleteData($_GET["id"]);
-		header("Location: a_otsing.php");
-		exit();
-	}
 
 	if (!isset($_SESSION["userId"])) {
 		header("Location: login.php");
@@ -38,11 +33,18 @@
 		$notes = $Helper->cleanInput($_POST["notes"]);
 
 echo $id;
-		$Event->updateData($id, $year, $students, $boys, $girls, $teachers, $language, $notes);
+$Event->updateData($id, $year, $students, $boys, $girls, $teachers, $language, $notes);
 $send_id=substr($_POST["id"], 4);
 		header("Location: aasta_muutmine.php?q=".$send_id."&success=true");
         exit();
 
+	}
+
+	if(isset($_GET["delete"])){
+		$Event->deleteData($_GET["id"]);
+		$send_id=substr($_GET["id"], 4);
+		header("Location: aasta_muutmine.php?q=".$send_id."&success=true");
+		exit();
 	}
 
 	$p = $Event->getSingleData($_GET["id"]);

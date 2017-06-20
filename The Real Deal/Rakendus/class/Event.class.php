@@ -979,16 +979,17 @@ class Event {
   function getSingleDirector($edit_principal){
 
 
-    $stmt = $this->connection->prepare("SELECT start_year, end_year, principal FROM s_principals WHERE principal=? AND deleted IS NULL");
+    $stmt = $this->connection->prepare("SELECT REG_ID, start_year, end_year, principal FROM s_principals WHERE principal=? AND deleted IS NULL");
 
     $stmt->bind_param("s", $edit_principal);
-    $stmt->bind_result($start_year, $end_year, $principal);
+    $stmt->bind_result($REG_ID, $start_year, $end_year, $principal);
     $stmt->execute();
 
     $p = new Stdclass();
 
     if($stmt->fetch()){
 
+      $p->REG_ID = $REG_ID;
       $p->start_year = $start_year;
       $p->end_year = $end_year;
       $p->principal = $principal;
@@ -1126,7 +1127,7 @@ class Event {
 
 
     if($stmt->execute()){
-      header("Location: direktori_muutmine.php?q=".$_GET['id']);
+      header("Location: a_otsing.php");
       exit();
     }
 
