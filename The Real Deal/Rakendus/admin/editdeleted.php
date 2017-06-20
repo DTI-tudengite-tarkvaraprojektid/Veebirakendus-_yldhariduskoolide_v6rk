@@ -38,9 +38,10 @@
     <script type="text/javascript" src = "../script/edit.js" ></script>
 </head>
 <body>
-  <a href="a_avaleht.html"><button class="buttons">AVALEHT</button></a>
-  <a href="a_otsing.php"><button class="buttons"> OTSING</button></a>
+	<a href="a_otsing.php"><button class="buttons"> OTSING</button></a>
   <a href="lisamine.php"><button class="buttons">LISAMINE</button></a>
+	<a href="a_otsing_del.php"><button class="buttons deleted">KUSTUTATUD</button></a>
+	<button class="logout"><a href="?logout=1" class="logoutlink">Logi välja</a></button>
 
     <table id="content">
     <tbody>

@@ -339,9 +339,22 @@ class Event {
 
 			$human = new StdClass();
 			$human->id = $id;
+
+      if ($name == "DEFAULT"){
+        $name = "";
+      }
 			$human->name = $name;
+
+      if ($type == "DEFAULT"){
+        $type = "";
+      }
 			$human->type = $type;
+
+      if ($county == "DEFAULT"){
+        $county = "";
+      }
 			$human->county = $county;
+
       if ($parish == "DEFAULT"){
         $parish = "";
       }
@@ -352,8 +365,19 @@ class Event {
       }
       $human->city = $city;
 
+      if ($address == "DEFAULT"){
+        $address = "";
+      }
 			$human->address = $address;
+
+      if ($postcode == "DEFAULT"){
+        $postcode = "";
+      }
       $human->postcode = $postcode;
+
+      if ($webpage == "DEFAULT"){
+        $webpage = "";
+      }
 			$human->webpage = $webpage;
 
 
@@ -431,13 +455,41 @@ class Event {
 
       $human = new StdClass();
       $human->id = $id;
+
+      if ($year == "DEFAULT"){
+        $yaer = "";
+      }
       $human->year = $year;
       $human->REG_ID = $REG_ID;
+
+      if ($students == "DEFAULT"){
+        $students = "";
+      }
       $human->students = $students;
+
+      if ($boys == "DEFAULT"){
+        $boys = "";
+      }
       $human->boys = $boys;
+
+      if ($girls == "DEFAULT"){
+        $girls = "";
+      }
       $human->girls = $girls;
+
+      if ($teachers == "DEFAULT"){
+        $teachers = "";
+      }
       $human->teachers = $teachers;
+
+      if ($language == "DEFAULT"){
+        $language = "";
+      }
       $human->language = $language;
+
+      if ($notes == "DEFAULT"){
+        $notes = "";
+      }
       $human->notes = $notes;
 
 
@@ -499,8 +551,20 @@ class Event {
 
       $human = new StdClass();
       $human->REG_ID = $REG_ID;
+
+      if ($start_year == "DEFAULT"){
+        $start_year = "";
+      }
       $human->start_year = $start_year;
+
+      if ($end_year == "DEFAULT"){
+        $end_year = "";
+      }
       $human->end_year = $end_year;
+
+      if ($principal == "DEFAULT"){
+        $principal = "";
+      }
       $human->principal = $principal;
 
 
@@ -792,14 +856,46 @@ class Event {
 		while ($stmt->fetch()) {
 
 			$human = new StdClass();
-			$human->id = $id;
+      $human->id = $id;
+
+      if ($name == "DEFAULT"){
+        $name = "";
+      }
 			$human->name = $name;
+
+      if ($type == "DEFAULT"){
+        $type = "";
+      }
 			$human->type = $type;
+
+      if ($county == "DEFAULT"){
+        $county = "";
+      }
 			$human->county = $county;
+
+      if ($parish == "DEFAULT"){
+        $parish = "";
+      }
       $human->parish = $parish;
-			$human->city = $city;
+
+      if ($city == "DEFAULT"){
+        $city = "";
+      }
+      $human->city = $city;
+
+      if ($address == "DEFAULT"){
+        $address = "";
+      }
 			$human->address = $address;
+
+      if ($postcode == "DEFAULT"){
+        $postcode = "";
+      }
       $human->postcode = $postcode;
+
+      if ($webpage == "DEFAULT"){
+        $webpage = "";
+      }
 			$human->webpage = $webpage;
 
 
