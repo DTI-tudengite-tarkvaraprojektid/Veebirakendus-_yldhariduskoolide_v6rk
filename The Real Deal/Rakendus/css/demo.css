@@ -206,15 +206,25 @@ h3 {
   }
 
 .backBTN{
-  position: absolute;
+  position: fixed;
   margin-top: 1px;
   margin-left: 2px;
   top: 0;
   left: 0;
   line-height: 22px;
-  width: 80px;
-  font-size: 15pt;
   display: block;
+  width: 80px;
+  font-size: 20px !important;
+  font-family: "Times New Roman", "Times New Roman", serif;
+  font-style: italic;
+  text-transform: uppercase;
+  padding: 0.5em;
+  font-weight: 400;
+  letter-spacing: -2.6px;
+  margin-bottom: 5px;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #slider3-pager a {

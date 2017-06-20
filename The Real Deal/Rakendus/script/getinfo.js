@@ -262,7 +262,10 @@ function getPics(){
             picUrl = JSON.parse(xhttp.responseText);
             console.log(JSON.parse(xhttp.responseText));
             console.log('loaded');
+
             displaySingleImage();
+       } else {
+            getPeople();
        }
     };
     xhttp.open("GET", '../Php/getpics.php?REG_ID='+regID, true);
