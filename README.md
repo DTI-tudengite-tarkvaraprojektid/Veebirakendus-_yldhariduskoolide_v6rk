@@ -97,7 +97,7 @@ CREATE TABLE `s_principals` (
   `deleted` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-PILTIDE TABEL
+PILTIDE TABEL  
 CREATE TABLE `s_pic` (
   `REG_ID` int,
   `pic_nr` int,
