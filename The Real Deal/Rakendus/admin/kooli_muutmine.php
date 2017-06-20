@@ -76,13 +76,13 @@
           <td class="field"><p>MAAKOND </p></td>
           <td class="value"><input type="hidden" name="county" id="countyInput" value="<?php echo $p->county;?>"><p id="county" name="county" type="text"><?php echo $p->county;?></p><img src="../pildid/edit.png" onclick="changeValue('county')" alt="Edit symbol" class="edit"></td>
       </tr>
-    	<tr>
-          <td class="field"><p>ALEVIK/LINNAOSA </p></td>
-					<td class="value"><input type="hidden" name="city" id="cityInput" value="<?php echo $p->city;?>"><p id="city" name="city" type="text"><?php echo $p->city;?></p><img src="../pildid/edit.png" onclick="changeValue('city')" alt="Edit symbol" class="edit"></td>
-      </tr>
-      <tr>
+       <tr>
           <td class="field"><p>VALD/LINN </p></td>
           <td class="value"><input type="hidden" name="parish" id="parishInput" value="<?php echo $p->parish;?>"><p id="parish" name="parish" type="text"><?php echo $p->parish;?></p><img src="../pildid/edit.png" onclick="changeValue('parish')" alt="Edit symbol" class="edit"></td>
+      </tr>
+    	<tr>
+          <td class="field"><p>ASULA/LINNAOSA </p></td>
+					<td class="value"><input type="hidden" name="city" id="cityInput" value="<?php echo $p->city;?>"><p id="city" name="city" type="text"><?php echo $p->city;?></p><img src="../pildid/edit.png" onclick="changeValue('city')" alt="Edit symbol" class="edit"></td>
       </tr>
       <tr>
           <td class="field"><p>ADDRESS </p></td>

@@ -15,10 +15,10 @@ function changeValue(what){
     case 'county':
       type = 'maakonda';
       break;
-    case 'city':
+    case 'parish':
       type = 'valda/linna';
       break;
-    case 'parish':
+    case 'city':
       type = 'asulat/linnaosa';
       break;
     case 'address':
