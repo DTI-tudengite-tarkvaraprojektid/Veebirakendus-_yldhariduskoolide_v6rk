@@ -324,7 +324,7 @@ class Event {
 			$stmt = $this->connection->prepare("
 				SELECT id, name, type, county, parish, city, address, postcode, webpage
 				FROM s_schools
-				WHERE deleted IS NULL
+				WHERE deleted IS NULL AND parish='Tallinn' 
 				ORDER BY $sort $orderBy
 			");
 		}
