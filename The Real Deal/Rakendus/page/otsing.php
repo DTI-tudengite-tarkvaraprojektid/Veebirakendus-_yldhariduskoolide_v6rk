@@ -53,7 +53,7 @@
 		$order = $_GET["order"];
 	}
 
-	$people = $Event->getAllPeople($q, $sort, $order, $e, $r, $y);
+	$people = $Event->getSchools($q, $sort, $order, $e, $r, $y);
 
 
 ?>
@@ -114,7 +114,7 @@
              $html .= "<th class='center'><a href='?q=".$q."&sort=county&order=".$orderCounty."'>
        							Maakond
        					 </th>";
-						 
+
 			$orderParish = "ASC";
            					 if (isset($_GET["order"]) &&
            						 $_GET["order"] == "ASC" &&
@@ -150,7 +150,7 @@
 				$html .= "<td class='center'>".$p->parish."</td>";
 				$html .= "<td class='center'>".$p->city."</td>";
 
- 
+
 
 
   			$html .= "</tr>";
