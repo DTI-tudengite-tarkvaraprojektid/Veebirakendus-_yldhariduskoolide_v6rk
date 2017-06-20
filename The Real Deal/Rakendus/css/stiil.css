@@ -115,14 +115,18 @@ ul{
   list-style: none;
   margin: 0;
   padding: 2px;
+
 }
 
 label{
   display: block;
   cursor: pointer;
-
-  border-bottom: none;
   color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 2px;
+  margin: 0;
+  border: 1px solid black;
 }
 
 label:hover{
@@ -130,18 +134,15 @@ label:hover{
   background-color: #b20e10 ;
 }
 
-label.last{
-
-}
-
 ul ul li{
   padding: 0px;
   background: #F5F5F5;
+  margin: 0px;
 }
 
 
 input[type="checkbox"]{
-  position: absolute;
+  position: relative;
   left: -9999px;
 }
 
@@ -159,5 +160,5 @@ input[type="checkbox"]:checked ~ ul{
 
 input[type="checkbox"]:checked + label{
   background: #b20e10 ;
-
+  color: white;
 }
