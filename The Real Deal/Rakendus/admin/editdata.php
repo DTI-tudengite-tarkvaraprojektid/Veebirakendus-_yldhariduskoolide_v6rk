@@ -39,8 +39,8 @@
 
 echo $id;
 		$Event->updateData($id, $year, $students, $boys, $girls, $teachers, $language, $notes);
-
-		header("Location: aasta_muutmine.php?q=".$_POST["id"]."&success=true");
+$send_id=substr($_POST["id"], 4);
+		header("Location: aasta_muutmine.php?q=".$send_id."&success=true");
         exit();
 
 	}
