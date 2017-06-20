@@ -30,7 +30,9 @@ Tanel Otsa
 
 Kirill Kotkas  
 
-Brigid-Ly Palkman   
+Brigid-Ly Palkman  
+
+-->[BLOGI](http://suvepraktika.cs.tlu.ee/2017/ryhm01/)<-- 
 
 Paigaldus
 ---
