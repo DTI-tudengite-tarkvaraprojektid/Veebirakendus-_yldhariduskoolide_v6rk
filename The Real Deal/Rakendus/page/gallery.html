@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="">
+  <script type="text/javascript" src="../script/gallery.js"></script>
+  <link rel="stylesheet" href="../css/responsiveslides.css">
+  <link rel="stylesheet" href="../css/demo.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+  <script type="text/javascript" src="../script/responsiveslides.min.js"></script>
+</head>
+
+<body>
+  <ul class="rslides" id="slider2"></ul>
+  <button id="backBTN" class="backBTN" type="button" name="button">Tagasi</button>
+</body>
+<script>
+    $(function () {
+      $("#slider2").responsiveSlides({
+        auto: false,
+        pager: true,
+        prevText: "Eelmine",
+        nextText: "Järgmine",
+        nav: false,
+        speed: 300,
+        maxwidth: 800
+      });
+    });
+</script>
+</html>

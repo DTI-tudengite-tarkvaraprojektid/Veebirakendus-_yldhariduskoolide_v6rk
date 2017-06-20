@@ -7,13 +7,16 @@ var startYear;
 var principals;
 var addchange;
 var namechange;
+var picUrl = [];
+var img;
+var container;
 //See käivitub lehe laadimisel
 window.onload = function(){
-                //Aadressi realt saadakse kooli nimi
+                //Aadressi realt saadakse kooli nimi'
                 schoolname = decodeURIComponent(location.search.substring(12));
                 console.log(schoolname);
                 getRegID();
-        }
+        };
         //Selle funktsiooniga saadakse vastava kooli id
         function getRegID(){
             var xhttp = new XMLHttpRequest();
@@ -26,7 +29,7 @@ window.onload = function(){
                 }
             };
             xhttp.open("GET", '../Php/getregnr.php?school='+schoolname, true);
-            xhttp.send();               
+            xhttp.send();
         }
         //Võtab andmebaasist kooli andmed
         function getSchools(){
@@ -37,7 +40,7 @@ window.onload = function(){
                     console.log(JSON.parse(xhttp.responseText));
                     console.log('loaded');
                     addinfo();
-                    //loadMap();                    
+                    //loadMap();
                 }
             };
             xhttp.open("GET", '../Php/getinfo.php?REG_ID='+regID, true);
@@ -66,7 +69,7 @@ window.onload = function(){
             loadMap();
         }
         //Laeb googlemapsi kaardi
-        function loadMap(){          
+        function loadMap(){
             //proovib leida aadressi kauadu asukohta
             var countysql = schools[0].county;
             var parishsql = schools[0].parish;
@@ -82,12 +85,12 @@ window.onload = function(){
                     var map = new google.maps.Map(document.getElementById('map'), {
                         zoom: 17,
                         center: {lat: latitude, lng: longitude}
-                    });                   
+                    });
                     var marker = new google.maps.Marker({
                         position: {lat: latitude, lng: longitude},
                         map: map
                     });
-                //kui aadressi kaudu ei suutnud koordinaate leida siis proovib leida nime järgi 
+                //kui aadressi kaudu ei suutnud koordinaate leida siis proovib leida nime järgi
                 } else {
                     console.log("uus katse");
                     //alert('Geocode was not successful for the following reason: ' + status);
@@ -95,8 +98,8 @@ window.onload = function(){
                     makeMarker();
                 }
             });
-    getprincipals();   
-    }    
+    getprincipals();
+    }
     //Nime järgi asukoha leidmise funktsioon
     function makeMarker (){
             var geocoder = new google.maps.Geocoder();
@@ -108,7 +111,7 @@ window.onload = function(){
                 var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 17,
                     center: {lat: latitude, lng: longitude}
-                });             
+                });
                 var marker = new google.maps.Marker({
                     position: {lat: latitude, lng: longitude},
                     map: map
@@ -126,14 +129,14 @@ window.onload = function(){
                 people = JSON.parse(xhttp.responseText);
                 console.log(JSON.parse(xhttp.responseText));
                 console.log('loaded');
-                startYear = people[0]; 
+                startYear = people[0];
                 people.shift();
-                console.log(people);  
+                console.log(people);
                 loadDia();
         }
      };
         xhttp.open("GET", '../Php/getpeopleinfo.php?regid='+regID, true);
-        xhttp.send();          
+        xhttp.send();
     }
     //kuvatakse õpilaste arvud diagrammil
     function loadDia(){
@@ -145,9 +148,9 @@ window.onload = function(){
         /*subtitle: {
             text: 'Source: thesolarfoundation.com'
         },*/
-        yAxis: { 
+        yAxis: {
             title: {
-                text: 'Õpilaste arv',              
+                text: 'Õpilaste arv',
             }
         },
         /*legend: {
@@ -175,16 +178,16 @@ function getprincipals(){
                       if (this.readyState == 4 && this.status == 200) {
                               principals = JSON.parse(xhttp.responseText);
                               console.log("tired: "+JSON.parse(xhttp.responseText));
-                              console.log('loaded');    
-                              printprincipals();   
+                              console.log('loaded');
+                              printprincipals();
                       }
                   };
                   xhttp.open("GET", '../Php/getprincipals.php?REG_ID='+regID, true);
-                  xhttp.send();                      
+                  xhttp.send();
 }
 //Kuvatakse direktorite andmed lehele
 function printprincipals(){
-        for (i = 0; i < principals.length; i++) { 
+        for (i = 0; i < principals.length; i++) {
                   var ul = document.getElementById("principals");
                   var li = document.createElement("li");
                   var children = ul.children.length + 1;
@@ -202,7 +205,7 @@ function getaddchange(){
                       if (this.readyState == 4 && this.status == 200) {
                               addchange = JSON.parse(xhttp.responseText);
                               console.log("tired: "+JSON.parse(xhttp.responseText));
-                              console.log('loaded');    
+                              console.log('loaded');
                               printaddchange();
                       }
                   };
@@ -211,7 +214,7 @@ function getaddchange(){
 }
 //Kuvatakse aadressi muutused lehele
 function printaddchange(){
-    for (i = 0; i < addchange.length; i++) { 
+    for (i = 0; i < addchange.length; i++) {
                   var ul = document.getElementById("addchange");
                   var li = document.createElement("li");
                   var children = ul.children.length + 1;
@@ -220,7 +223,7 @@ function printaddchange(){
                   li.appendChild(document.createTextNode(add));
                   ul.appendChild(li);
     }
-    
+
     getnamehange();
 }
 //Andmebaassit võtakse nimede muutused
@@ -230,7 +233,7 @@ function getnamehange(){
                       if (this.readyState == 4 && this.status == 200) {
                               namechange = JSON.parse(xhttp.responseText);
                               console.log("tired: "+JSON.parse(xhttp.responseText));
-                              console.log('loaded');    
+                              console.log('loaded');
                               printnamehange();
                       }
                   };
@@ -239,7 +242,7 @@ function getnamehange(){
 }
 //Kuvatakse nimede muutused lehele
 function printnamehange(){
-    for (i = 0; i < namechange.length; i++) { 
+    for (i = 0; i < namechange.length; i++) {
                   var ul = document.getElementById("namechange");
                   var li = document.createElement("li");
                   var children = ul.children.length + 1;
@@ -248,6 +251,33 @@ function printnamehange(){
                   li.appendChild(document.createTextNode(name));
                   ul.appendChild(li);
     }
-    
-    getPeople();
+    getPics();
+
 }
+//Võetakse antud kooli kohta käivad pildid
+function getPics(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            picUrl = JSON.parse(xhttp.responseText);
+            console.log(JSON.parse(xhttp.responseText));
+            console.log('loaded');
+            displaySingleImage();
+       }
+    };
+    xhttp.open("GET", '../Php/getpics.php?REG_ID='+regID, true);
+    xhttp.send();
+}
+//näidatakse välja massiivis 0. kohal olev pilt
+displaySingleImage = function(){
+  container = document.getElementById('image');
+  img = document.createElement('img');
+  img.src = picUrl[0].link;
+  container.appendChild(img);
+
+  document.getElementById("image").onclick = function(){
+    location.href = "gallery.html?id="+regID+"&schoolname="+schoolname;
+  };
+
+  getPeople();
+};
