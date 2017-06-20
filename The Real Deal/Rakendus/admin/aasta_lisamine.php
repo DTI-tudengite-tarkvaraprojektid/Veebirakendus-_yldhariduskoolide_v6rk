@@ -44,7 +44,7 @@
 	) {
 
 
-    $year = $Helper->cleanInput($_POST["year"]);
+    $year = $_POST["year"];
 		$REG_ID = $Helper->cleanInput($_POST["REG_ID"]);
 		$students = $Helper->cleanInput($_POST["students"]);
 		$boys = $Helper->cleanInput($_POST["boys"]);
@@ -52,7 +52,8 @@
 		$teachers = $Helper->cleanInput($_POST["teachers"]);
 		$language = $Helper->cleanInput($_POST["language"]);
 		$notes = $Helper->cleanInput($_POST["notes"]);
-		$id = $year.$REG_ID;
+		$new_id=substr($year, 0, 4);
+		$id = intval($new_id.$REG_ID);
 		$Event->saveData($id, $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes);
 	}
 
