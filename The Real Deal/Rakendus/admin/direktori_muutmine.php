@@ -42,7 +42,7 @@
 		$order = $_GET["order"];
 	}
 
-	$people = $Event->getAllDirectors($q, $sort, $order);
+	$people = $Event->getDirectors($q, $sort, $order);
 
 
 ?>
@@ -133,6 +133,9 @@
 					$html .= "<td class='center'>
 				<a href='editdirector.php?director=".$p->principal."'>
 					<span class='glyphicon glyphicon-pencil'></span> Muuda
+				</a>
+				<a href='deletedirector.php?director=".$p->principal."'>
+					<span class='glyphicon glyphicon-pencil'></span> Kustuta
 				</a>
 				</td>";
 

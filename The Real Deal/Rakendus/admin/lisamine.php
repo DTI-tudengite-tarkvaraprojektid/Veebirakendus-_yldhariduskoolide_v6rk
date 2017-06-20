@@ -53,7 +53,7 @@
 		$postcode = $Helper->cleanInput($_POST["postcode"]);
 		$webpage = $Helper->cleanInput($_POST["webpage"]);
 
-		$Event->saveEvent($Helper->cleanInput($_POST["id"]), $name, $type, $county, $parish, $city, $address, $postcode, $webpage );
+		$Event->saveShool($Helper->cleanInput($_POST["id"]), $name, $type, $county, $parish, $city, $address, $postcode, $webpage );
 	}
 
 

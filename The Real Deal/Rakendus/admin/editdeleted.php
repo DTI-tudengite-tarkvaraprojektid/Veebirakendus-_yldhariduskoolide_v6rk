@@ -8,7 +8,7 @@
 	$Event = new Event($mysqli);
 
 	if(isset($_GET["addagain"])){
-		$Event->addAgainPerson($_GET["id"]);
+		$Event->addAgainSchools($_GET["id"]);
 		header("Location: a_otsing_del.php");
 		exit();
 	}
@@ -22,7 +22,7 @@
 
 	}
 
-	$p = $Event->getSinglePerosonDataDel($_GET["id"]);
+	$p = $Event->getSingleSchoolDel($_GET["id"]);
 
 
 ?>

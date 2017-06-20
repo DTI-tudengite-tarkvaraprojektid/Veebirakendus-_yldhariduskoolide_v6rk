@@ -50,7 +50,7 @@
 		$order = $_GET["order"];
 	}
 
-	$people = $Event->getDelPeople($q, $sort, $order, $e, $r, $y);
+	$people = $Event->getDelSchools($q, $sort, $order, $e, $r, $y);
 
 
 ?>

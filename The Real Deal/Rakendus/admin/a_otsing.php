@@ -44,7 +44,7 @@
 		$order = $_GET["order"];
 	}
 
-	$people = $Event->getAllPeople($q, $sort, $order, $e, $r, $y);
+	$people = $Event->getSchools($q, $sort, $order, $e, $r, $y);
 
 
 ?>

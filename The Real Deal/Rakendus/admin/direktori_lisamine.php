@@ -23,7 +23,7 @@
 
 	$getId = '';
 	if(isset($_GET["id"])){ $getId = $_GET["id"]; }
-	
+
 
 	if ( isset($_POST["REG_ID"]) &&
 	 	isset($_POST["start_year"]) &&
@@ -41,7 +41,7 @@
 		$end_year = $Helper->cleanInput($_POST["end_year"]);
 		$principal = $Helper->cleanInput($_POST["principal"]);
 
-		$Event->saveEventDirector($Helper->cleanInput($_POST["REG_ID"]), $start_year, $end_year, $principal);
+		$Event->saveDirector($Helper->cleanInput($_POST["REG_ID"]), $start_year, $end_year, $principal);
 	}
 
 

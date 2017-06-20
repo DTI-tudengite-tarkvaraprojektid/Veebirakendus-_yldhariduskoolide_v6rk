@@ -8,7 +8,7 @@
 	$Event = new Event($mysqli);
 
 	if(isset($_GET["delete"])){
-		$Event->deletePersonData($_GET["id"]);
+		$Event->deleteData($_GET["id"]);
 		header("Location: a_otsing.php");
 		exit();
 	}
@@ -38,14 +38,14 @@
 		$notes = $Helper->cleanInput($_POST["notes"]);
 
 echo $id;
-		$Event->updatePersonData($id, $year, $students, $boys, $girls, $teachers, $language, $notes);
+		$Event->updateData($id, $year, $students, $boys, $girls, $teachers, $language, $notes);
 
 		header("Location: aasta_muutmine.php?q=".$_POST["id"]."&success=true");
         exit();
 
 	}
 
-	$p = $Event->getSinglePerosonDataData($_GET["id"]);
+	$p = $Event->getSingleData($_GET["id"]);
 
 
 ?>

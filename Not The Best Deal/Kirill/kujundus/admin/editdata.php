@@ -37,7 +37,6 @@
 		$language = $Helper->cleanInput($_POST["language"]);
 		$notes = $Helper->cleanInput($_POST["notes"]);
 
-echo $id;
 		$Event->updatePersonData($id, $year, $students, $boys, $girls, $teachers, $language, $notes);
 
 		header("Location: aasta_muutmine.php?q=".$_POST["id"]."&success=true");

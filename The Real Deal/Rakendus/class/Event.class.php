@@ -7,8 +7,8 @@ class Event {
 		$this->connection = $mysqli;
 	}
 
-
-	function saveEvent($id, $name, $type, $county, $parish, $city, $address, $postcode, $webpage) {
+//kooli lisamine
+	function saveShool($id, $name, $type, $county, $parish, $city, $address, $postcode, $webpage) {
 
 		$stmt = $this->connection->prepare("INSERT INTO s_schools (id, name, type, county, parish, city, address, postcode, webpage) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		echo $this->connection->error;
@@ -24,8 +24,8 @@ class Event {
 		}
 
 	}
-
-  function saveEventData($id, $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes) {
+//koolide andmete lisamine
+  function saveData($id, $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes) {
 
     $stmt = $this->connection->prepare("INSERT INTO s_data (id, year, REG_ID, students, boys, girls, teachers, language, notes) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     echo $this->connection->error;
@@ -41,8 +41,8 @@ class Event {
     }
 
   }
-
-  function saveEventDirector($REG_ID, $start_year, $end_year, $principal) {
+//direktori lisamine
+  function saveDirector($REG_ID, $start_year, $end_year, $principal) {
 
     $stmt = $this->connection->prepare("INSERT INTO s_principals (REG_ID, start_year, end_year, principal) VALUE (?, ?, ?, ?)");
     echo $this->connection->error;
@@ -58,8 +58,8 @@ class Event {
     }
 
   }
-
-	function getAllPeople($q, $sort, $order, $e, $r, $y) {
+//võtab koolid
+	function getSchools($q, $sort, $order, $e, $r, $y) {
 
 		$allowedSort = ["id", "name", "type", "county", "parish", "city", "address", "postcode", "webpage"];
 
@@ -342,8 +342,16 @@ class Event {
 			$human->name = $name;
 			$human->type = $type;
 			$human->county = $county;
+      if ($parish == "DEFAULT"){
+        $parish = "";
+      }
       $human->parish = $parish;
-			$human->city = $city;
+
+      if ($city == "DEFAULT"){
+        $city = "";
+      }
+      $human->city = $city;
+
 			$human->address = $address;
       $human->postcode = $postcode;
 			$human->webpage = $webpage;
@@ -356,8 +364,8 @@ class Event {
 		return $results;
 
 	}
-
-  function getAllPeopleData($q, $sort, $order, $w) {
+//võtab koolide andmeid
+  function getData($q, $sort, $order, $w) {
 
     $allowedSort = ["id", "year", "REG_ID", "students", "boys", "girls", "teachers", "language", "notes"];
 
@@ -440,8 +448,8 @@ class Event {
     return $results;
 
   }
-
-  function getAllDirectors($q, $sort, $order) {
+//võtab direktorid
+  function getDirectors($q, $sort, $order) {
 
     $allowedSort = ["REG_ID", "start_year", "end_year", "principal"];
 
@@ -503,8 +511,8 @@ class Event {
     return $results;
 
   }
-
-  function getDelPeople($q, $sort, $order, $e, $r, $y) {
+//võtab koolid, mis on kustutatud
+  function getDelSchools($q, $sort, $order, $e, $r, $y) {
 
 		$allowedSort = ["id", "name", "type", "county", "parish", "city", "address", "postcode", "webpage"];
 
@@ -802,8 +810,8 @@ class Event {
 		return $results;
 
 	}
-
-	function getSinglePerosonData($edit_id){
+//võtab üks kool
+	function getSingleSchool($edit_id){
 
 
 		$stmt = $this->connection->prepare("SELECT name, type, county, parish, city, address, postcode, webpage FROM s_schools WHERE id=? AND deleted IS NULL");
@@ -837,8 +845,8 @@ class Event {
 		return $p;
 
 	}
-
-  function getSinglePerosonDataData($edit_id){
+//võtab andmeid ühest koolist
+  function getSingleData($edit_id){
 
 
 		$stmt = $this->connection->prepare("SELECT year, students, boys, girls, teachers, language, notes FROM s_data WHERE id=? AND deleted IS NULL");
@@ -871,8 +879,8 @@ class Event {
 		return $p;
 
 	}
-
-  function getSinglePerosonDataDirectors($edit_principal){
+//võtab ühe direktori andmed
+  function getSingleDirector($edit_principal){
 
 
     $stmt = $this->connection->prepare("SELECT start_year, end_year, principal FROM s_principals WHERE principal=? AND deleted IS NULL");
@@ -896,8 +904,8 @@ class Event {
     return $p;
 
   }
-
-  function getSinglePerosonDataDel($edit_id){
+//võtab üks kustutatud kool
+  function getSingleSchoolDel($edit_id){
 
 
     $stmt = $this->connection->prepare("SELECT name, type, county, parish, city, address, postcode, webpage FROM s_schools WHERE id=? AND deleted IS NOT NULL");
@@ -931,8 +939,8 @@ class Event {
     return $p;
 
   }
-
-	function updatePerson($id, $name, $type, $county, $city, $parish, $address, $postcode, $webpage){
+//teeb kooli update
+	function updateSchools($id, $name, $type, $county, $city, $parish, $address, $postcode, $webpage){
 
 		$stmt = $this->connection->prepare("UPDATE s_schools SET name=?, type=?, county=?, city=?, parish=?, address=?, postcode=?, webpage=?  WHERE id=? AND deleted IS NULL");
 		$stmt->bind_param("ssssssssi",$name, $type, $county, $city, $parish, $address, $postcode, $webpage, $id);
@@ -946,8 +954,8 @@ class Event {
 		$stmt->close();
 
 	}
-
-  function updatePersonData($id, $year, $students, $boys, $girls, $teachers, $language, $note){
+//teeb kooli andmete update
+  function updateData($id, $year, $students, $boys, $girls, $teachers, $language, $note){
 
     $stmt = $this->connection->prepare("UPDATE s_data SET year=?, students=?, boys=?, girls=?, teachers=?, language=?, notes=?  WHERE id=? AND deleted IS NULL");
     $stmt->bind_param("iiiiissi",$year, $students, $boys, $girls, $teachers, $language, $notes, $id);
@@ -960,11 +968,11 @@ class Event {
     $stmt->close();
 
   }
+//teeb direktori update
+  function updateDirectors($start_year, $end_year, $principal){
 
-  function updatePersonDirector($REG_ID, $start_year, $end_year, $principal){
-
-    $stmt = $this->connection->prepare("UPDATE s_principals SET REG_ID=?, start_year=?, end_year=?, principal=? WHERE principal=? AND deleted IS NULL");
-    $stmt->bind_param("isss",$REG_ID, $start_year, $end_year, $principal);
+    $stmt = $this->connection->prepare("UPDATE s_principals SET start_year=?, end_year=?, principal=? WHERE principal=? AND deleted IS NULL");
+    $stmt->bind_param("ssss",$start_year, $end_year, $principal, $principal);
 
 
     if($stmt->execute()){
@@ -975,8 +983,8 @@ class Event {
     $stmt->close();
 
   }
-
-	function deletePerson($id){
+//kustutab koolid
+	function deleteSchools($id){
 
     $database = "if16_kirikotk_4";
 
@@ -993,8 +1001,8 @@ class Event {
 		$stmt->close();
 
 	}
-
-  function deletePersonData($id){
+//kustutab kooli andmed
+  function deleteData($id){
 
     $database = "if16_kirikotk_4";
 
@@ -1011,24 +1019,26 @@ class Event {
     $stmt->close();
 
   }
-
-  function deletePersonDirector($principal){
+//kustutab direktori
+  function deleteDirectors($principal){
 
     $database = "if16_kirikotk_4";
     $stmt = $this->connection->prepare("
     UPDATE s_principals SET deleted=NOW()
     WHERE principal=?");
+    $stmt->bind_param("s",$principal);
+
 
     if($stmt->execute()){
-
-      echo "salvestus õnnestus!";
+      header("Location: direktori_muutmine.php?q=".$_GET['id']);
+      exit();
     }
 
     $stmt->close();
 
   }
-
-  function addAgainPerson($id){
+//taastab kustutatud koolid
+  function addAgainSchools($id){
 
     $database = "if16_kirikotk_4";
 
@@ -1046,7 +1056,6 @@ class Event {
     $stmt->close();
 
   }
-
 
 }
 ?>

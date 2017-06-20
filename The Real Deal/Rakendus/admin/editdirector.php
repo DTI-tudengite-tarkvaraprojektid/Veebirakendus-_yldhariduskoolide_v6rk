@@ -7,11 +7,6 @@
 	require("../class/Event.class.php");
 	$Event = new Event($mysqli);
 
-	if(isset($_GET["delete"])){
-		$Event->deletePersonDirector($_GET["director"]);
-		header("Location: direktori_muutmine.php?q=".$_GET['id']);
-		exit();
-	}
 	if (!isset($_SESSION["userId"])) {
 		header("Location: login.php");
 		exit();
@@ -27,18 +22,22 @@
 	}
 
 	if(isset($_POST["update"])){
+		$start_year = $Helper->cleanInput($_POST["start_year"]);
+		$end_year = $Helper->cleanInput($_POST["end_year"]);
+		$principal = $Helper->cleanInput($_POST["principal"]);
 
-				$Event->updatePersonDirector($Helper->cleanInput($_POST["REG_ID"]), $Helper->cleanInput($_POST["start_year"]), $Helper->cleanInput($_POST["end_year"]), $Helper->cleanInput($_POST["principal"]));
+		$Event->updateDirectors($start_year, $end_year, $principal);
 
 		header("Location: direktori_muutmine.php?id=".$_POST["id"]."&success=true");
         exit();
 
 	}
 
-	$p = $Event->getSinglePerosonDataDirectors($_GET["director"]);
-	$w = $Event->deletePersonDirector($_GET["director"]);
-
-
+	if(isset($_POST["principal"])){
+		$p = $Event->getSingleDirector($_POST["principal"]);
+	}else{
+		$p = $Event->getSingleDirector($_GET["director"]);
+	}
 
 ?>
 
@@ -64,7 +63,7 @@
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
 				<tr>
 	          <td class="field"><p>Direktor </p></td>
-	          <td class="value"><input type="hidden" name="principal" id="principalInput" value="<?php echo $p->principal;?>"><p id="principal" name="principal" type="text"><?php echo $p->principal;?></p><img src="../pildid/edit.png" onclick="changeDirectorValue('principal')" alt="Edit symbol" class="edit"></td>
+	          <td class="value"><input type="hidden" name="principal" id="principalInput" value="<?php echo $p->principal;?>"><p id="principal" name="principal" type="text"><?php echo $p->principal;?></p></td>
 	      </tr>
 				<tr>
 	          <td class="field"><p>Alustamine </p></td>
@@ -81,6 +80,5 @@
       </form>
     </tbody>
     </table>
-<a href="?id=<?=$_GET["id"];?>&delete=true" class="deletebtn"><button>kustuta</a>
     </body>
     </html>

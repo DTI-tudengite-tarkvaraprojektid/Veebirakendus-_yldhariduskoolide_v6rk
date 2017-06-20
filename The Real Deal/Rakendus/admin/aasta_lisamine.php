@@ -44,7 +44,6 @@
 	) {
 
 
-		//$id = $Helper->cleanInput($_POST["id"]);
     $year = $Helper->cleanInput($_POST["year"]);
 		$REG_ID = $Helper->cleanInput($_POST["REG_ID"]);
 		$students = $Helper->cleanInput($_POST["students"]);
@@ -54,7 +53,7 @@
 		$language = $Helper->cleanInput($_POST["language"]);
 		$notes = $Helper->cleanInput($_POST["notes"]);
 		$id = $year.$REG_ID;
-		$Event->saveEventData($id, $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes);
+		$Event->saveData($id, $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes);
 	}
 
 

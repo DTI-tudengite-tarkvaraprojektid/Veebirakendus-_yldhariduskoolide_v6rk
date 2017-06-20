@@ -9,7 +9,7 @@
 	$Event = new Event($mysqli);
 
 	if(isset($_GET["delete"])){
-		$Event->deletePerson($_GET["id"]);
+		$Event->deleteSchools($_GET["id"]);
 		header("Location: a_otsing.php");
 		exit();
 	}
@@ -29,7 +29,7 @@
 		$postcode = $Helper->cleanInput($_POST["postcode"]);
 		$webpage = $Helper->cleanInput($_POST["webpage"]);
 
-		$Event->updatePerson($id, $name, $type, $county, $city, $parish, $address, $postcode, $webpage);
+		$Event->updateSchools($id, $name, $type, $county, $city, $parish, $address, $postcode, $webpage);
 
 		header("Location: a_otsing.php?id=".$_POST["id"]."&success=true");
         exit();
@@ -37,9 +37,9 @@
 	}
 
     if(isset($_POST["id"])){
-        $p = $Event->getSinglePerosonData($_POST["id"]);
+        $p = $Event->getSingleSchool($_POST["id"]);
     }else{
-	    $p = $Event->getSinglePerosonData($_GET["id"]);
+	    $p = $Event->getSingleSchool($_GET["id"]);
     }
 
 

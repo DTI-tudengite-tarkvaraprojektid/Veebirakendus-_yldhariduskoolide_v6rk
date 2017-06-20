@@ -342,8 +342,16 @@ class Event {
 			$human->name = $name;
 			$human->type = $type;
 			$human->county = $county;
+      if ($parish == "DEFAULT"){
+        $parish = "";
+      }
       $human->parish = $parish;
-			$human->city = $city;
+
+      if ($city == "DEFAULT"){
+        $city = "";
+      }
+      $human->city = $city;
+
 			$human->address = $address;
       $human->postcode = $postcode;
 			$human->webpage = $webpage;
@@ -964,7 +972,7 @@ class Event {
   function updatePersonDirector($REG_ID, $start_year, $end_year, $principal){
 
     $stmt = $this->connection->prepare("UPDATE s_principals SET REG_ID=?, start_year=?, end_year=?, principal=? WHERE principal=? AND deleted IS NULL");
-    $stmt->bind_param("isss",$REG_ID, $start_year, $end_year, $principal);
+    $stmt->bind_param("sssss",$REG_ID, $start_year, $end_year, $principal, $principal);
 
 
     if($stmt->execute()){
@@ -1020,7 +1028,6 @@ class Event {
     WHERE principal=?");
 
     if($stmt->execute()){
-
       echo "salvestus õnnestus!";
     }
 
@@ -1046,7 +1053,6 @@ class Event {
     $stmt->close();
 
   }
-
 
 }
 ?>

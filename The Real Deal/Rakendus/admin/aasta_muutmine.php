@@ -43,7 +43,7 @@
 		$order = $_GET["order"];
 	}
 
-	$people = $Event->getAllPeopleData($q, $sort, $order, $w);
+	$people = $Event->getData($q, $sort, $order, $w);
 
 
 ?>
