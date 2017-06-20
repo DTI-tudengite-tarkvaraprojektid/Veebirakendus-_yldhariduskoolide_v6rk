@@ -30,7 +30,7 @@ class Event {
     $stmt = $this->connection->prepare("INSERT INTO s_data (id, year, REG_ID, students, boys, girls, teachers, language, notes) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     echo $this->connection->error;
 
-    $stmt->bind_param("iiiiiiiss", $id, $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes);
+    $stmt->bind_param("isiiiiiss", $id, $year, $REG_ID, $students, $boys, $girls, $teachers, $language, $notes);
 
     if ( $stmt->execute() ) {
     header("Location: aasta_muutmine.php?q=".$_GET['id']);
@@ -1125,9 +1125,9 @@ class Event {
     WHERE principal=?");
     $stmt->bind_param("s",$principal);
 
-
+$redicet = $_SERVER['HTTP_REFERER'];
     if($stmt->execute()){
-      header("Location: a_otsing.php");
+      header("Location: $redicet");
       exit();
     }
 
